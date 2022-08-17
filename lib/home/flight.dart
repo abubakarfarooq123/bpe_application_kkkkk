@@ -1,5 +1,5 @@
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:bpe_application/home/calender.dart';
-import 'package:bpe_application/navbar/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +25,10 @@ class _FlightState extends State<Flight> {
         backgroundColor: Colors.transparent,
         title: Padding(
           padding: const EdgeInsets.fromLTRB(70,0,0,0),
-          child: Text("Flights"),
+          child: Text("Flights",
+          style: GoogleFonts.limelight(
+            fontSize: 25,
+          ),),
         ),
       ),
     body: ClipRRect(
@@ -38,7 +41,7 @@ class _FlightState extends State<Flight> {
     width: double.infinity,
     color: Colors.white,
     child: SingleChildScrollView(
-        child: TicketView(),
+            child: TicketView()
       ),
     ),
     ),
@@ -82,16 +85,17 @@ class _TicketViewState extends State<TicketView> {
                   children: [
                     SizedBox(
                       width: 100,
-                      child: Text("From",
-                        style: GoogleFonts.raleway(
-                          color: Colors.black,
-                          fontSize: 10,
+                      child:  Text("From",
+                          style: GoogleFonts.limelight(
+                            color: Colors.black,
+                            fontSize: 10,
+                          ),
                         ),
-                      ),
                     ),
+
                     Text("To",
                       textAlign: TextAlign.end,
-                      style: GoogleFonts.raleway(
+                      style: GoogleFonts.limelight(
                         color: Colors.black,
                         fontSize: 10,
                       ),
@@ -100,10 +104,9 @@ class _TicketViewState extends State<TicketView> {
                 ),
                 Row(
                   children: [
-                    Text("Atlanta",style: GoogleFonts.raleway(
+                    Text("Atlanta",style: GoogleFonts.limelight(
                       color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
                     ),
                     ),
                     SizedBox(
@@ -172,11 +175,10 @@ class _TicketViewState extends State<TicketView> {
                     SizedBox(
                       width: 16,
                     ),
-                    Text("Mexico",style: GoogleFonts.raleway(
+                    Text("Mexico",style: GoogleFonts.limelight(
                       color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
+                      fontSize: 13,
+                   ),
                     ),
                   ],
                 ),
@@ -187,7 +189,7 @@ class _TicketViewState extends State<TicketView> {
                     SizedBox(
                       width: 100,
                       child: Text("Kata",
-                        style: GoogleFonts.raleway(
+                        style: GoogleFonts.limelight(
                           color: Colors.black,
                           fontSize: 10,
                         ),
@@ -196,7 +198,7 @@ class _TicketViewState extends State<TicketView> {
                     SizedBox(
                       child: Text("Puerto Vallarta ",
                         textAlign: TextAlign.end,
-                        style: GoogleFonts.raleway(
+                        style: GoogleFonts.limelight(
                           color: Colors.black,
                           fontSize: 10,
 
@@ -234,10 +236,9 @@ class _TicketViewState extends State<TicketView> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("Garza Blanca Preserve Resort & Spa",
-                          style: GoogleFonts.raleway(
+                          style: GoogleFonts.limelight(
                             color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 13,
                           ),
                         ),
                       Row(
@@ -250,7 +251,7 @@ class _TicketViewState extends State<TicketView> {
                             padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
                             child: Text("Puerto Vallarta, Mexico",
                               textAlign: TextAlign.end,
-                              style: GoogleFonts.raleway(
+                              style: GoogleFonts.limelight(
                                 color: Colors.black,
                                 fontSize: 10,
                               ),
@@ -264,20 +265,18 @@ class _TicketViewState extends State<TicketView> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.fromLTRB(150, 20, 0, 0),
-                        child: Text("80 Dollars per day",style: GoogleFonts.raleway(
+                        child: Text("80 Dollars per day",style: GoogleFonts.limelight(
                           color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
                         ),
                         ),
                       ),
                       SizedBox(
                         height: 16,
                       ),
-                      Text("Reviews",style: GoogleFonts.raleway(
+                      Text("Reviews",style: GoogleFonts.limelight(
                         color: Colors.black26,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
                       ),
                       ),
                     ],
@@ -296,7 +295,7 @@ class _TicketViewState extends State<TicketView> {
                           padding: const EdgeInsets.fromLTRB(0, 5, 30, 0),
                           child: Text("3.7  | 728 reviews total",
                             textAlign: TextAlign.end,
-                            style: GoogleFonts.raleway(
+                            style: GoogleFonts.limelight(
                               color: Colors.black,
                               fontSize: 10,
                           ),
@@ -305,19 +304,19 @@ class _TicketViewState extends State<TicketView> {
                             ],
                         ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 200, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 30, 200, 0),
                         child: Text("Description",
-                        style: GoogleFonts.raleway(
+                        style: GoogleFonts.limelight(
                           color: Colors.black,
-                          fontWeight: FontWeight.bold
                         ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
                         child: Text("Hotel located in mexico and already had recomendation from mexico..........",
-                          style: GoogleFonts.raleway(
+                          style: GoogleFonts.limelight(
                             color: Colors.black,
+                            fontSize: 13
                           ),
                         ),
                       ),
@@ -356,29 +355,26 @@ class _TicketViewState extends State<TicketView> {
                  children: [
                    Padding(padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                    child: Text("Total price",
-                   style: GoogleFonts.raleway(
-                     fontSize: 15,
-                     fontWeight: FontWeight.bold,
+                   style: GoogleFonts.limelight(
+                     fontSize: 12,
                      color: Colors.black,
                    ),
                    ),
                    ),
-                   Padding(padding: EdgeInsets.fromLTRB(122, 10, 0, 0),
+                   Padding(padding: EdgeInsets.fromLTRB(132, 10, 0, 0),
                      child: Text("1329 Dollars",
-                       style: GoogleFonts.raleway(
-                         fontSize: 15,
-                         fontWeight: FontWeight.bold,
+                       style: GoogleFonts.limelight(
+                         fontSize: 12,
                          color: Colors.black,
                        ),
                      ),
                    ),
                  ],
                ),
-                  Padding(padding: EdgeInsets.fromLTRB(0, 15, 70, 0),
+                  Padding(padding: EdgeInsets.fromLTRB(0, 25, 110, 0),
                     child: Text("Include 3 days stay in resort",
-                      style: GoogleFonts.raleway(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                      style: GoogleFonts.limelight(
+                        fontSize: 12,
                         color: Colors.black,
                       ),
                     ),
@@ -391,7 +387,7 @@ class _TicketViewState extends State<TicketView> {
             height: 15,
           ),
           Container(
-            height: 50,
+            height: 40,
             width: 320,
             child: FlatButton(
               shape: RoundedRectangleBorder(
@@ -405,9 +401,8 @@ class _TicketViewState extends State<TicketView> {
               child: Center(
                 child: Text(
                   "Book",
-                  style: TextStyle(
+                  style: GoogleFonts.limelight(
                     color: Colors.white,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -416,6 +411,7 @@ class _TicketViewState extends State<TicketView> {
         ],
       ),
     );
+
   }
 }
 

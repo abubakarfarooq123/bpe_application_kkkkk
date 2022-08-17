@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bpe_application">
    <application
-        android:label="bpe_application"
+        android:label="BPE Air"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,4 +1,5 @@
-import 'package:bpe_application/home/home.dart';
+import 'package:bpe_application/demo_pages/demo5.dart';
+import 'package:bpe_application/navbar/navbar.dart';
 import 'package:bpe_application/user/forgot.dart';
 import 'package:bpe_application/user/registration.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,225 +25,230 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 100, 250, 0),
-                      child: Image.asset("assets/images/app_icon.jpeg",
-                      height:100 ,
-                      width: 100,),
-                    ),
-              Center(
-                  child: Padding(padding: EdgeInsets.fromLTRB(10, 120, 190, 30),
-                  child: Text(
-                    "Welcome Back !!!",
-                    style: TextStyle(
-                      fontFamily: "Lato-Black",
-                      fontSize: 20.0,
-                      color: Colors.white,
+          child: Column(
+            children: <Widget>[
+              Container(
+                height: 250,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 40, 250, 0),
+                        child: Image.asset("assets/images/app_icon.jpeg",
+                        height:100 ,
+                        width: 100,),
+                      ),
+                Center(
+                    child: Padding(padding: EdgeInsets.fromLTRB(10, 40, 140, 30),
+                    child: Text(
+                      "Welcome Back !!!",
+                      style:GoogleFonts.limelight(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                ),
     ),
 
-                ],
-                ),
-            ),
-            ClipRRect(
-              borderRadius: new BorderRadius.only(
-                  topLeft: const Radius.circular(40.0),
-                  topRight: const Radius.circular(40.0)),
-              child: Container(
-                height: MediaQuery.of(context).size.height -
-                    MediaQuery.of(context).size.height / 2.5,
-                width: double.infinity,
-                color: Colors.white,
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: new Form(
-                          child: Column(
-                            children: <Widget>[
-                              Padding(padding: EdgeInsets.fromLTRB(10, 20, 250, 10),
-                              child: Text(
-                                  "Login",
-                                style: TextStyle(
-                                  color: Colors.blue
-                                ),
-                              ),
-                              ),
-                              Padding(padding: EdgeInsets.fromLTRB(10, 20, 200, 10),
+                  ],
+                  ),
+              ),
+              ClipRRect(
+                borderRadius: new BorderRadius.only(
+                    topLeft: const Radius.circular(40.0),
+                    topRight: const Radius.circular(40.0)),
+                child: Container(
+                  height: MediaQuery.of(context).size.height -
+                      MediaQuery.of(context).size.height / 3,
+                  width: double.infinity,
+                  color: Colors.white,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: new Form(
+                            child: Column(
+                              children: <Widget>[
+                                Padding(padding: EdgeInsets.fromLTRB(10, 10, 250, 10),
                                 child: Text(
-                                  "Email or Phone",
-                                  style: TextStyle(
-                                      color: Colors.black,
+                                    "Login",
+                                  style: GoogleFonts.limelight(
+                                    color: Colors.black,
+                                    fontSize: 14
                                   ),
                                 ),
-                              ),
-
-                              Padding(
-                                padding: const EdgeInsets.all(18.0),
-                                child: TextFormField(
-                                    autofocus: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'Email ID',
-                                      errorStyle: TextStyle(
-                                        color: Colors.redAccent,
-                                        fontSize: 15.0,
-                                      ),
-                                      icon: Icon(
-                                        FontAwesomeIcons.envelope,
-                                        color: Color.fromARGB(255, 218, 162, 16),
-                                      ),
-                                    ),
-                                    ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(18.0),
-                                child: TextFormField(
-                                    autofocus: false,
-                                    obscureText: true,
-                                    decoration: InputDecoration(
-                                      hintText: 'Password',
-                                      errorStyle: TextStyle(
-                                        color: Colors.redAccent,
-                                        fontSize: 15.0,
-                                      ),
-                                      icon: Icon(
-                                        FontAwesomeIcons.lock,
-                                        color: Color.fromARGB(255, 218, 162, 16),
-                                      ),
-
-                                    ),
-                                    ),
-                              ),
-                              SizedBox(
-                                height: 30.0,
-                              ),
-                              Center(
-                                child: Container(
-                                  height: 40.0,
-                                  width: 340.0,
-                                  // ignore: deprecated_member_use
-                                  child: RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Home()));
-
-                                    },
-                                    color: Color.fromARGB(1000, 218, 162, 16),
-                                    child: Text(
-                                      'Login',
-                                      style: GoogleFonts.raleway(
-                                        fontSize: 18.0,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
                                 ),
-                              ),
-
-                              SizedBox(
-                                height: 10.0,
-                              ),
-                              Center(
-                                child: Container(
-                                  height: 40.0,
-                                  width: 340.0,
-                                  // ignore: deprecated_member_use
-                                  child: RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Home()));
-                                    },
-                                    color: Color.fromARGB(200, 246, 232, 195),
-                                    child: Text(
-                                      'Guest',
-                                      style: TextStyle(
-                                        fontSize: 18.0,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 10,),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Forget()));
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(3, 20, 210, 30),
+                                Padding(padding: EdgeInsets.fromLTRB(25, 10, 130, 10),
                                   child: Text(
-                                    'Forgot Password?',
-                                    style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 218, 162, 16),
+                                    "Email or Phone Number",
+                                    style: GoogleFonts.limelight(
+                                        color: Colors.black,
+                                      fontSize: 14
                                     ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text("Don't have an account? ",
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                    ),),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    RegisterPage()));
-                                      },
-                                      child: Text(
-                                        "Sign Up",
-                                        style: TextStyle(
+
+                                Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: TextFormField(
+                                      autofocus: false,
+                                      decoration: InputDecoration(
+                                        hintText: 'Enter Email ID or number',
+                                        errorStyle: GoogleFonts.limelight(
+                                          color: Colors.redAccent,
+                                          fontSize: 15.0,
+                                        ),
+                                        icon: Icon(
+                                          FontAwesomeIcons.envelope,
                                           color: Color.fromARGB(255, 218, 162, 16),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      ),
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: TextFormField(
+                                      autofocus: false,
+                                      obscureText: true,
+                                      decoration: InputDecoration(
+                                        hintText: 'Password',
+                                        errorStyle: GoogleFonts.limelight(
+                                          color: Colors.redAccent,
+                                          fontSize: 15.0,
+                                        ),
+                                        icon: Icon(
+                                          FontAwesomeIcons.lock,
+                                          color: Color.fromARGB(255, 218, 162, 16),
+                                        ),
+
+                                      ),
+                                      ),
+                                ),
+                                SizedBox(
+                                  height: 30.0,
+                                ),
+                                Center(
+                                  child: Container(
+                                    height: 40.0,
+                                    width: 340.0,
+                                    // ignore: deprecated_member_use
+                                    child: RaisedButton(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30.0),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => Demo5()));
+
+                                      },
+                                      color: Color.fromARGB(1000, 218, 162, 16),
+                                      child: Text(
+                                        'Login',
+                                        style: GoogleFonts.limelight(
+                                          fontSize: 15.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                                SizedBox(
+                                  height: 10.0,
+                                ),
+                                Center(
+                                  child: Container(
+                                    height: 40.0,
+                                    width: 340.0,
+                                    // ignore: deprecated_member_use
+                                    child: RaisedButton(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30.0),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => MyBottomNavyBar()));
+                                      },
+                                      color: Color.fromARGB(200, 246, 224, 195),
+                                      child: Text(
+                                        'Guest',
+                                        style: GoogleFonts.limelight(
+                                          fontSize: 15.0,
+                                          color: Colors.white,
+                                          ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 10,),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Forget()));
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.fromLTRB(3, 20, 180, 30),
+                                    child: Text(
+                                      'Forgot Password?',
+                                      style: GoogleFonts.limelight(
+                                        fontSize: 14.0,
+                                        color: Color.fromARGB(255, 218, 162, 16),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text("Don't have an account? ",
+                                      style: GoogleFonts.limelight(
+                                        color: Colors.grey,
+                                        fontSize: 14
+                                      ),),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      RegisterPage()));
+                                        },
+                                        child: Text(
+                                          "Sign Up",
+                                          style: GoogleFonts.limelight(
+                                            color: Color.fromARGB(255, 218, 162, 16),
+                                            fontSize: 14
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+
     );
 
   }

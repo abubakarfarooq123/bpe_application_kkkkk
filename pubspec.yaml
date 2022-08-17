@@ -38,6 +38,9 @@ dependencies:
   intro_slider: any
   google_fonts: any
   bottom_navy_bar: any
+  table_calendar: any
+  intl: any
+
 
 
 

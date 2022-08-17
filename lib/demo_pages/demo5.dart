@@ -1,6 +1,8 @@
 import 'package:bpe_application/home/home.dart';
+import 'package:bpe_application/navbar/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 class Demo5 extends StatefulWidget {
   const Demo5({Key? key}) : super(key: key);
 
@@ -15,29 +17,29 @@ class _Demo5State extends State<Demo5> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/home.jpg"),
+            image: AssetImage("assets/images/plane6.jpg"),
             fit: BoxFit.cover,
           ),
         ),
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(139),
-              child: Text(
-                "Services",
-                style: GoogleFonts.raleway(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                padding: EdgeInsets.all(132),
+                child: Text(
+                  "Services",
+                  style: GoogleFonts.limelight(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            ),
             Padding(padding: EdgeInsets.fromLTRB(10,0,0,0),
               child: Center(
-                child: Text("Find new places where you can travel.Make a trip plan and we will provide you with the best.",
-                  style: GoogleFonts.raleway(
+                child: Text("Find new places where you can travel. Make a trip plan and we will provide you with the best.",
+                  style: GoogleFonts.limelight(
                     color: Colors.white,
-                    fontSize: 15,
+                    fontSize: 13,
                   ),
                 ),
               ),
@@ -52,44 +54,44 @@ class _Demo5State extends State<Demo5> {
                   padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
                   child: Text(
                     "Book Vacation package with: -",
-                    style: GoogleFonts.raleway(
+                    style: GoogleFonts.limelight(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 17,
                     ),
                   ),
                 ),
                 new ListTile(
                   leading: new MyBullet(),
                   title: new Text("Private Flights",
-                    style: GoogleFonts.raleway(
+                    style: GoogleFonts.limelight(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 13,
                     ),
                   ),
                 ),
                 new ListTile(
                   leading: new MyBullet(),
                   title: new Text("Resorts.",
-                    style: GoogleFonts.raleway(
+                    style: GoogleFonts.limelight(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 13,
                     ),),
                 ),
                 new ListTile(
                   leading: new MyBullet(),
                   title: new Text("5 Stars Hotel.",
-                    style: GoogleFonts.raleway(
+                    style: GoogleFonts.limelight(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 13,
                     ),
                   ),
                 ),
                 new ListTile(
                   leading: new MyBullet(),
                   title: new Text("You can split the payment as well.",
-                    style: GoogleFonts.raleway(
+                    style: GoogleFonts.limelight(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 13,
                     ),
                   ),
                 ),
@@ -111,18 +113,20 @@ class _Demo5State extends State<Demo5> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    Home()));
+                                    MyBottomNavyBar()));
                       },
                       child: Text(
-                        'Services',
-                        style: TextStyle(
+                        'Get Started',
+                        style: GoogleFonts.limelight(
                           fontSize: 18.0,
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
 
               ],

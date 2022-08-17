@@ -1,8 +1,7 @@
-import 'package:bpe_application/user/registration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'login.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class Forget extends StatefulWidget {
@@ -23,9 +22,8 @@ class _ForgetState extends State<Forget> {
         centerTitle: true,
         title: Text(
           "Reset your password",
-          style: TextStyle(
+          style: GoogleFonts.limelight(
             fontSize: 15.0,
-            fontFamily: "Lato-BoldItalic",
           ),
         ),
         leading: IconButton(
@@ -57,10 +55,10 @@ class _ForgetState extends State<Forget> {
               ],
             ),
                child:  Padding(
-                  padding: const EdgeInsets.fromLTRB(30, 60, 0, 10),
+                  padding: const EdgeInsets.fromLTRB(20, 60, 10, 10),
                   child: Text("Enter your Email below, we’ll send you a verify code to your email",
-                    style: TextStyle(
-                      fontSize: 15,
+                    style: GoogleFonts.limelight(
+                      fontSize: 13,
                     ),
                   ),
                 ),
@@ -80,9 +78,7 @@ class _ForgetState extends State<Forget> {
                 ),
               ],
             ),
-
-          child:  Expanded(
-            child: Form(
+          child: Form(
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
                 child: Column(children: [
@@ -119,7 +115,7 @@ class _ForgetState extends State<Forget> {
                       color: Color.fromARGB(255, 218, 162, 16),
                       child: Text(
                         "Send Email",
-                        style: TextStyle(color: Colors.white, fontSize: 15.0),
+                        style: GoogleFonts.limelight(color: Colors.white, fontSize: 13.0),
                       ),
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(100.0)),
@@ -133,7 +129,6 @@ class _ForgetState extends State<Forget> {
           ),
         ),
     ),
-          ),
     ]
     ),
       ),

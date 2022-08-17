@@ -1,5 +1,4 @@
 import 'package:bpe_application/home/flight.dart';
-import 'package:bpe_application/navbar/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +25,10 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.transparent,
         title: Padding(
           padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
-          child: Text("Flights"),
+          child: Text("Flights",
+          style: GoogleFonts.limelight(
+            color: Colors.white
+          ),),
         ),
       ),
       body: ClipRRect(
@@ -55,40 +57,45 @@ class _HomeState extends State<Home> {
                         ),
                         child: Column(
                           children: [
-                            Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: 100,
-                                  child: Text(
-                                    "From",
-                                    style: GoogleFonts.raleway(
-                                      color: Colors.black,
-                                      fontSize: 10,
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    width: 100,
+                                    child:
+                                    Text(
+                                      "From",
+                                      style: GoogleFonts.limelight(
+                                        color: Colors.black,
+                                        fontSize: 11,
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  child: Icon(Icons.arrow_circle_right),
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Flight()));
-                                  },
-                                )
-                              ],
+                                    ),
+
+                                  GestureDetector(
+                                    child: Icon(Icons.arrow_circle_right),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Flight()));
+                                    },
+                                  )
+                                ],
+                              ),
                             ),
                             SizedBox(height: 4),
                             Row(
                               children: [
-                                Text(
-                                  "Atlanta",
-                                  style: GoogleFonts.raleway(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
+                                Expanded(
+                                  child: Text(
+                                    "Atlanta",
+                                    style: GoogleFonts.limelight(
+                                      color: Colors.black,
+                                      fontSize: 13,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
@@ -103,14 +110,14 @@ class _HomeState extends State<Home> {
                               children: [
                                 SizedBox(
                                   width: 100,
-                                  child: Text(
-                                    "Kata",
-                                    style: GoogleFonts.raleway(
-                                      color: Colors.black,
-                                      fontSize: 10,
+                                    child: Text(
+                                      "Kata",
+                                      style: GoogleFonts.limelight(
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ),
-                                ),
                               ],
                             )
                           ],
@@ -196,12 +203,12 @@ class _HomeState extends State<Home> {
                                 children: [
                                   SizedBox(
                                     width: 100,
-                                    child: Text(
-                                      "To",
-                                      style: GoogleFonts.raleway(
-                                        color: Colors.black,
-                                        fontSize: 10,
-                                      ),
+                                      child: Text(
+                                        "To",
+                                        style: GoogleFonts.limelight(
+                                          color: Colors.black,
+                                          fontSize: 12,
+                                        ),
                                     ),
                                   ),
                                 ],
@@ -211,10 +218,9 @@ class _HomeState extends State<Home> {
                                 children: [
                                   Text(
                                     "Mexico",
-                                    style: GoogleFonts.raleway(
+                                    style: GoogleFonts.limelight(
                                       color: Colors.black,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
                                     ),
                                   ),
                                   SizedBox(
@@ -229,13 +235,13 @@ class _HomeState extends State<Home> {
                                 children: [
                                   SizedBox(
                                     width: 100,
-                                    child: Text(
-                                      "Puerto Vallarta ",
-                                      style: GoogleFonts.raleway(
-                                        color: Colors.black,
-                                        fontSize: 10,
+                                  child: Text(
+                                        "Puerto Vallarta ",
+                                        style: GoogleFonts.limelight(
+                                          color: Colors.black,
+                                          fontSize: 12,
+                                        ),
                                       ),
-                                    ),
                                   ),
                                 ],
                               )
@@ -248,8 +254,6 @@ class _HomeState extends State<Home> {
                 )
             ),
           ),
-
-      bottomNavigationBar: NavigationBarController(context),
     );
   }
 }

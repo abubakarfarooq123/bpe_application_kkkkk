@@ -4,6 +4,7 @@ import 'package:bpe_application/user/registration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class Demo4 extends StatefulWidget {
   const Demo4({Key? key}) : super(key: key);
 
@@ -15,108 +16,109 @@ class _Demo4State extends State<Demo4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
-        body: SingleChildScrollView(
+      backgroundColor: Colors.black,
+      body: SingleChildScrollView(
         child: Column(
-        children: <Widget>[
-        Padding(
-        padding: const EdgeInsets.fromLTRB(20,80,20,20),
-          child:  Container(
-            height: 50,
-            width: 320,
-            child: FlatButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              color: Color.fromARGB(255, 218, 162, 16),
-              onPressed: () { Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => RegisterPage())); },
-              child: Center(
-                child: Text(
-                  "Create Account",
-                  style: GoogleFonts.raleway(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 80, 20, 20),
+              child: Container(
+                height: 40,
+                width: 320,
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
                   ),
-                ),
-              ),
-            ),
-          ),
-        ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20,20,20,20),
-            child:  Container(
-              height: 50,
-              width: 320,
-              child: FlatButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                color: Colors.white,
-                onPressed: () { Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Login())); },
-                child: Center(
-                  child: Text(
-                    "Login",
-                    style: GoogleFonts.raleway(
-                      color: Color.fromARGB(255, 218, 162, 16),
-                      fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 218, 162, 16),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterPage()));
+                  },
+                  child: Center(
+                    child: Text(
+                      "Create Account",
+                      style: GoogleFonts.limelight(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          Padding(padding: EdgeInsets.all(40),
-          child: Center(
-          child: FlatButton(
-            onPressed: () { Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Demo5())); },
-            child: Text(
-            "Later",
-              style: GoogleFonts.raleway(
-                color: Color.fromARGB(255, 218, 162, 16),
-                fontWeight: FontWeight.w900,
-              ),
-          ),
-
-          ),
-          ),
-          ),
-          Padding(padding: EdgeInsets.all(40),
-            child: Center(
-              child: FlatButton(
-                onPressed: () {  },
-                child: Text(
-                  "By Using BPE's service you must agree to our Terms and Conditions and Privacy Policy ",
-                  style: GoogleFonts.raleway(
-                    color: Colors.white,
-                    fontSize: 15,
-                    letterSpacing: 2,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+              child: Container(
+                height: 40,
+                width: 320,
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Login()));
+                  },
+                  child: Center(
+                    child: Text(
+                      "Login",
+                      style: GoogleFonts.limelight(
+                        color: Color.fromARGB(255, 218, 162, 16),
+                      ),
+                    ),
                   ),
                 ),
-
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(150, 10, 0, 0),
-            child: Container(
-              child: Image.asset("assets/images/user.png"),
+            Padding(
+              padding: EdgeInsets.fromLTRB(40, 30, 40, 20),
+              child: Center(
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Demo5()));
+                  },
+                  child: Text(
+                    "Later",
+                    style: GoogleFonts.limelight(
+                      color: Color.fromARGB(255, 218, 162, 16),
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ),
-    ],
-    ),
-    ),
+            Padding(
+              padding: EdgeInsets.only(top: 30,left: 21,right: 8,bottom: 21),
+              child: Center(
+                child: FlatButton(
+                  onPressed: () {},
+                  child: Text(
+                    "By Using BPE's service, you must agree to our Terms & Conditions and applicable Privacy Policy ",
+                    textAlign: TextAlign.justify,
+                    style: GoogleFonts.limelight(
+                      color: Colors.white,
+                      fontSize: 13,
+                      letterSpacing: -0.4
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 100,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(150, 10, 0, 0),
+              child: Container(
+                child: Image.asset("assets/images/user.png"),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
-
-
-    }
+  }
 }
-

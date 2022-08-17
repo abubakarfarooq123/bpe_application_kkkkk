@@ -1,76 +1,94 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:bpe_application/chat/chat.dart';
+import 'package:bpe_application/home/home.dart';
+import 'package:bpe_application/trip/trip.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class NavigationBarController extends StatefulWidget {
-  NavigationBarController(BuildContext context);
+import '../user/profile.dart';
 
+class MyBottomNavyBar extends StatefulWidget {
+  const MyBottomNavyBar({Key? key}) : super(key: key);
 
   @override
-  _NavigationBarControllerState createState() =>
-      _NavigationBarControllerState();
+  _BottomNavyBarState createState() => _BottomNavyBarState();
 }
 
-class _NavigationBarControllerState
-    extends State<NavigationBarController> {
+class _BottomNavyBarState extends State<MyBottomNavyBar> {
+  PageController _pageController = PageController();
   int _currentIndex = 0;
-  late PageController _pageController;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _pageController = PageController();
   }
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    _pageController.dispose();
-    super.dispose();
-
-  }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox.expand(
-        child: PageView(
-          controller: _pageController,
-          onPageChanged: (index){
-            setState(() {
-              _currentIndex = index;
-            });
-
-          },
-
-        ),
+      body: PageView(
+        controller: _pageController,
+        children: <Widget>[
+          const Home(),
+          const Trip(),
+          const Chat(),
+          const Profile(),
+        ],
       ),
       bottomNavigationBar: BottomNavyBar(
-      onItemSelected: (index){
-        setState(() {
-          _pageController.jumpToPage(index);
-        });
-      },
-      items: <BottomNavyBarItem>[
-           BottomNavyBarItem(
-               icon: Icon(Icons.home,color: Colors.grey),
-               title: Text("Home",style:GoogleFonts.raleway(color: Colors.grey)),
-           ),
-           BottomNavyBarItem(
-             icon: Icon(Icons.wallet,color: Colors.grey),
-             title: Text("Wallet",style:GoogleFonts.raleway(color: Colors.grey)),
-           ),
-           BottomNavyBarItem(
-             icon: Icon(Icons.message_outlined,color: Colors.grey),
-             title: Text("Message",style:GoogleFonts.raleway(color: Colors.grey)),
-           ),
-           BottomNavyBarItem(
-             icon: Icon(Icons.account_circle,color: Colors.grey),
-             title: Text("Profile",style:GoogleFonts.raleway(color: Colors.grey)),
-           ),
-         ],
-       ),
-
+        containerHeight: 55.0,
+        backgroundColor: Colors.white70,
+        selectedIndex: _currentIndex,
+        showElevation: false,
+        itemCornerRadius: 24,
+        curve: Curves.easeIn,
+        onItemSelected: (index) => setState(() {
+          _currentIndex = index;
+          _pageController.animateToPage(index,
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.easeIn);
+        }),
+        items: <BottomNavyBarItem>[
+          BottomNavyBarItem(
+            inactiveColor: Colors.black,
+            icon: const Icon(Icons.home),
+            title: const Text('Home'),
+            activeColor: Color.fromARGB(255, 218, 162, 16),
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            inactiveColor: Colors.black,
+            icon: const Icon(Icons.local_airport),
+            title: const Text('Trip'),
+            activeColor: Color.fromARGB(255, 218, 162, 16),
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            inactiveColor: Colors.black,
+            icon: const Icon(Icons.message),
+            title: const Text(
+              'Inbox',
+            ),
+            activeColor: Color.fromARGB(255, 218, 162, 16),
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            inactiveColor: Colors.black,
+            icon: const Icon(FontAwesomeIcons.user,
+            size: 20,),
+            title: const Text('Profile'),
+            activeColor: Color.fromARGB(255, 218, 162, 16),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 }
