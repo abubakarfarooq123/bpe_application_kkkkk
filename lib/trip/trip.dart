@@ -45,11 +45,10 @@ class _TripState extends State<Trip> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.fromLTRB(10, 70, 0, 0),
+                    padding: EdgeInsets.fromLTRB(10, 80, 0, 0),
                     child:
-                      Image.asset("assets/images/bags.png"),
+                      Image.asset("assets/images/lv.png"),
                   ),
-
                   Container(
                     height: 50,
                     width: 140,

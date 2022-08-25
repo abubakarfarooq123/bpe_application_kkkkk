@@ -188,7 +188,7 @@ class _TicketViewState extends State<TicketView> {
                   children: [
                     SizedBox(
                       width: 100,
-                      child: Text("Kata",
+                      child: Text("Atlanta Georgia",
                         style: GoogleFonts.limelight(
                           color: Colors.black,
                           fontSize: 10,

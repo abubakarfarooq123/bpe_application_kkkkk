@@ -1,10 +1,12 @@
-import 'package:bpe_application/demo_pages/demo5.dart';
+import 'package:bpe_application/home/home_navbar_screen.dart';
 import 'package:bpe_application/navbar/navbar.dart';
 import 'package:bpe_application/user/forgot.dart';
 import 'package:bpe_application/user/registration.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 class Login  extends StatefulWidget {
@@ -15,7 +17,60 @@ class Login  extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final formkey = new GlobalKey<FormState>();
+  var email = "";
+  var password = "";
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  final storage = new FlutterSecureStorage();
+
   @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  userlogin() async {
+    try {
+      UserCredential userCredential= await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      print(userCredential.user?.uid);
+      await storage.write(key: "uid", value: userCredential.user?.uid);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => homeNavBar(),
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.orangeAccent,
+          content: Text(
+            'No User Found for that email',
+            style: GoogleFonts.limelight(
+              fontSize: 15.0,
+              color: Colors.white,
+            ),
+          ),
+        ));
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.redAccent,
+          content: Text(
+            'Incorrect Password',
+            style: GoogleFonts.limelight(
+              fontSize: 15.0,
+              color: Colors.white,
+            ),
+          ),
+        ));
+      }
+    }
+  }
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, //top bar color
@@ -68,6 +123,7 @@ class _LoginState extends State<Login> {
                         Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: new Form(
+                            key: formkey,
                             child: Column(
                               children: <Widget>[
                                 Padding(padding: EdgeInsets.fromLTRB(10, 10, 250, 10),
@@ -104,6 +160,15 @@ class _LoginState extends State<Login> {
                                           color: Color.fromARGB(255, 218, 162, 16),
                                         ),
                                       ),
+                                      controller: emailController,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please Enter Email';
+                                        } else if (!value.contains('@')) {
+                                          return 'Please Enter Valid Email';
+                                        }
+                                        return null;
+                                      }
                                       ),
                                 ),
                                 Padding(
@@ -121,8 +186,14 @@ class _LoginState extends State<Login> {
                                           FontAwesomeIcons.lock,
                                           color: Color.fromARGB(255, 218, 162, 16),
                                         ),
-
                                       ),
+                                      controller: passwordController,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please Enter Password';
+                                        }
+                                        return null;
+                                      }
                                       ),
                                 ),
                                 SizedBox(
@@ -138,11 +209,13 @@ class _LoginState extends State<Login> {
                                         borderRadius: BorderRadius.circular(30.0),
                                       ),
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => Demo5()));
-
+                                        if (formkey.currentState!.validate()) {
+                                          setState(() {
+                                            email = emailController.text;
+                                            password = passwordController.text;
+                                          });
+                                          userlogin();
+                                        }
                                       },
                                       color: Color.fromARGB(1000, 218, 162, 16),
                                       child: Text(

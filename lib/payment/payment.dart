@@ -199,7 +199,7 @@ class _PaymentState extends State<Payment> {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(90, 25, 0, 0),
                           child: Text(
-                            "Atlanta Katama",
+                            "Atlanta Georgia",
                             textAlign: TextAlign.end,
                             style: GoogleFonts.limelight(
                               color: Colors.black,

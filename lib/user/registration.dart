@@ -1,3 +1,7 @@
+import 'package:bpe_application/demo_pages/demo5.dart';
+import 'package:bpe_application/home/home.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,7 +14,98 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
- @override
+  final _formKey = GlobalKey<FormState>();
+
+  var name="";
+  var email="";
+  var phone="";
+  var password="";
+  var confirmPassword="";
+
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final phoneController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+
+
+  @override
+  void dispose(){
+    nameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+  Future<void> adduser() async {
+    print("UserEmail is :" + email);
+    print('Values are ' + name + email + phone);
+  }
+
+  Future<User?> registration() async {
+    if (password == confirmPassword) {
+      try {
+        User? user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: email, password: password))
+            .user;
+        user?.updateProfile(displayName: name);
+        await FirebaseFirestore.instance
+            .collection('registration')
+            .doc(FirebaseAuth.instance.currentUser?.uid)
+            .set({
+          'name': name,
+          'email': email,
+          'phone': phone,
+          "uid": FirebaseAuth.instance.currentUser?.uid,
+        })
+            .then((value) => print('User Added'))
+            .catchError((error) => print('Falied to add user: $error'));
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Demo5(),
+          ),
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Colors.red,
+            content: Text(
+              'Password Provided is too weak',
+              style: GoogleFonts.limelight(
+                fontSize: 15.0,
+                color: Colors.white,
+              ),
+            ),
+          ));
+        } else if (e.code == 'email-already-in-use') {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Colors.red,
+            content: Text(
+              'Account already exists',
+              style: GoogleFonts.limelight(
+                fontSize: 15.0,
+                color: Colors.white,
+              ),
+            ),
+          ));
+        }
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(
+          "Password and Conform Password Does'nt match",
+          style: GoogleFonts.limelight(
+            fontSize: 15.0,
+            color: Colors.white,
+          ),
+        ),
+      ));
+    }
+  }
 
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -67,7 +162,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.fromLTRB(30, 30, 0, 10),
-                          child: Text("BPE",
+                          child: Text("BPE Air",
                           style: GoogleFonts.limelight(
                             fontSize: 20,
                           ),
@@ -75,9 +170,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(30, 60, 0, 10),
-                          child: Text("Fill in your full information here to register",
+                          child: Text("Register Today !!!!",
                             style: GoogleFonts.limelight(
-                              fontSize: 12,
+                              fontSize: 15,
                             ),
                           ),
                         ),
@@ -102,7 +197,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
 
                 child: new Form(
-                    child: Column(
+                  key: _formKey,
+                  child: Column(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(18.0),
@@ -114,8 +210,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                   color: Color.fromARGB(255, 218, 162, 16),
                                 ),
                               ),
-                              ),
-                        ),
+                              controller: nameController,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Enter Name';
+                                }
+                                return null;
+                              }),
+                ),
                         Padding(
                           padding: const EdgeInsets.all(18.0),
                           child: TextFormField(
@@ -130,7 +232,15 @@ class _RegisterPageState extends State<RegisterPage> {
                                   color: Color.fromARGB(255, 218, 162, 16),
                                 ),
                               ),
-                              ),
+                              controller: emailController,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Enter Email';
+                                } else if (!value.contains('@')) {
+                                  return 'Please Enter Valid Email';
+                                }
+                                return null;
+                              }),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(18.0),
@@ -142,7 +252,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                   color: Color.fromARGB(255, 218, 162, 16),
                                 ),
                               ),
-                              ),
+                              controller: phoneController,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Enter Phone';
+                                }
+                                return null;
+                              }),
+
                         ),
                         Padding(
                           padding: const EdgeInsets.all(18.0),
@@ -154,7 +271,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                 color: Color.fromARGB(255, 218, 162, 16),
                               ),
                             ),
-                          ),
+                              controller: passwordController,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Enter Password';
+                                }
+                                return null;
+                              }),
+
                         ),
                         Padding(
                           padding: const EdgeInsets.all(18.0),
@@ -166,7 +290,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                 color: Color.fromARGB(255, 218, 162, 16),
                               ),
                             ),
-                          ),
+                              controller: confirmPasswordController,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Re-Enter Password';
+                                }
+                                return null;
+                              }),
+
                         ),
                         SizedBox(
                           height: 20,
@@ -180,6 +311,16 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             color: Color.fromARGB(255, 218, 162, 16),
                             onPressed: () {
+                              if (_formKey.currentState!.validate()){
+                                setState(() {
+                                  name = nameController.text;
+                                  email = emailController.text;
+                                  phone = phoneController.text;
+                                  password = passwordController.text;
+                                  confirmPassword = confirmPasswordController.text;
+                                });
+                                registration();
+                              }
 
                             },
                             child: Text(

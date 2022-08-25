@@ -37,36 +37,8 @@ class _ForgetState extends State<Forget> {
       body: SingleChildScrollView(
         child: Column(
             children: [
-          SizedBox(
-          height: 7,
-        ),
-          Container(
-            height: 200,
-            width: 400,
-            decoration: new BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ],
-            ),
-               child:  Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 60, 10, 10),
-                  child: Text("Enter your Email below, we’ll send you a verify code to your email",
-                    style: GoogleFonts.limelight(
-                      fontSize: 13,
-                    ),
-                  ),
-                ),
-          ),
-        SizedBox(height: 7),
         Container(
             height: 800,
-            
             decoration: new BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -80,7 +52,7 @@ class _ForgetState extends State<Forget> {
             ),
           child: Form(
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+                padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
                 child: Column(children: [
                   Container(
                     margin: EdgeInsets.symmetric(
@@ -89,7 +61,7 @@ class _ForgetState extends State<Forget> {
                     child: TextFormField(
                       autofocus: false,
                       decoration: InputDecoration(
-                        hintText: 'Email ID',
+                        hintText: 'Email Address',
                         errorStyle: TextStyle(
                           color: Colors.redAccent,
                           fontSize: 15.0,
@@ -97,16 +69,8 @@ class _ForgetState extends State<Forget> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-                    child: Column(children: [
-                    Container(
-                      child: Image.asset("assets/images/pass.png",
-                      height: 250,
-                      width: 250,),
-                    ),
-                    SizedBox(height: 30),
-                    Container(
+                  SizedBox(height: 40),
+                  Container(
                     margin: EdgeInsets.only(left: 80.0, right: 80, top: 0),
                     child: FlatButton(
                       onPressed: () {
@@ -119,9 +83,26 @@ class _ForgetState extends State<Forget> {
                       ),
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(100.0)),
-                      height: 40.0,
+                      height: 50.0,
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+                    child: Column(children: [
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(25,100,0,0),
+                          child: Container(
+                              child: Image.asset("assets/images/logo-removebg-preview.png"),
+                            height: 250,
+                            width: 250,
+                          ),
+                        ),
+                      ]
+                    ),
+
+                      SizedBox(height: 30),
                 ]),
               ),
             ],

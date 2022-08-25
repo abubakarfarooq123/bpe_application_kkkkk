@@ -3,9 +3,12 @@ import 'package:bpe_application/payment/payment.dart';
 import 'package:bpe_application/profile_menu/frequent_location.dart';
 import 'package:bpe_application/profile_menu/promo_code.dart';
 import 'package:bpe_application/user/edit_profile.dart';
+import 'package:bpe_application/user/login.dart';
 import 'package:bpe_application/user/reset_password.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,6 +20,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final storage = new FlutterSecureStorage();
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -375,7 +379,12 @@ class _ProfileState extends State<Profile> {
                 Padding(
                   padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                   child: FlatButton(
-                    onPressed: (){},
+                    onPressed: () async=> {
+                      await FirebaseAuth.instance.signOut(),
+                      await storage.delete(key:"uid"),
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context)=> Login(),))
+                    },
                     child: Row(
                       children: [
                         Padding(padding: EdgeInsets.fromLTRB(10, 10, 0, 10),

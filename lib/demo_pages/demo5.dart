@@ -30,16 +30,16 @@ class _Demo5State extends State<Demo5> {
                   style: GoogleFonts.limelight(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               ),
-            Padding(padding: EdgeInsets.fromLTRB(10,0,0,0),
+            Padding(padding: EdgeInsets.fromLTRB(15,0,20,0),
               child: Center(
-                child: Text("Find new places where you can travel. Make a trip plan and we will provide you with the best.",
+                child: Text("“The world is a book, and those who do not travel read only one page.” ",
                   style: GoogleFonts.limelight(
-                    color: Colors.white,
-                    fontSize: 13,
+                    color: Colors.black,
+                    fontSize: 15,
                   ),
                 ),
               ),
@@ -55,7 +55,7 @@ class _Demo5State extends State<Demo5> {
                   child: Text(
                     "Book Vacation package with: -",
                     style: GoogleFonts.limelight(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 17,
                     ),
                   ),
@@ -64,7 +64,7 @@ class _Demo5State extends State<Demo5> {
                   leading: new MyBullet(),
                   title: new Text("Private Flights",
                     style: GoogleFonts.limelight(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 13,
                     ),
                   ),
@@ -73,24 +73,24 @@ class _Demo5State extends State<Demo5> {
                   leading: new MyBullet(),
                   title: new Text("Resorts.",
                     style: GoogleFonts.limelight(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 13,
                     ),),
                 ),
                 new ListTile(
                   leading: new MyBullet(),
-                  title: new Text("5 Stars Hotel.",
+                  title: new Text("5 Star Restaurants.",
                     style: GoogleFonts.limelight(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 13,
                     ),
                   ),
                 ),
                 new ListTile(
                   leading: new MyBullet(),
-                  title: new Text("You can split the payment as well.",
+                  title: new Text("Add Spliting Payments.",
                     style: GoogleFonts.limelight(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 13,
                     ),
                   ),
@@ -150,7 +150,7 @@ class MyBullet extends StatelessWidget{
         height: 5.0,
         width: 5.0,
         decoration: new BoxDecoration(
-          color: Colors.white,
+          color: Colors.black,
           shape: BoxShape.circle,
         ),
       ),

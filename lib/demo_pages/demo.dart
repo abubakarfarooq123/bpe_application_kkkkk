@@ -33,9 +33,15 @@ class Demo extends StatelessWidget {
               ),
       Column(
         children:[
+          SizedBox(
+            height: 150,
+          ),
+          Image.asset("assets/images/logo-removebg-preview.png",
+          height: 60,
+          width: 60,),
           Center(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(100, 270, 100, 0),
+            padding: const EdgeInsets.fromLTRB(100, 50, 100, 0),
               child: Text(
               "BPE Air.",
               style: GoogleFonts.limelight(
@@ -51,7 +57,7 @@ class Demo extends StatelessWidget {
           ),
           Center(
         child: Text(
-                "The best host for the journey",
+                "The best host for your amazing memories.",
                 style: GoogleFonts.limelight(
                   fontSize: 10.0,
                   color: Colors.white,
@@ -62,7 +68,7 @@ class Demo extends StatelessWidget {
         ],
       ),
       SizedBox(
-        height: 30,
+        height: 60,
       ),
       SizedBox(
         height: 220,

@@ -219,7 +219,7 @@ class _PessengerState extends State<Pessenger> {
                                     padding:
                                         const EdgeInsets.fromLTRB(65, 15, 0, 0),
                                     child: Text(
-                                      "Atlanta Katama",
+                                      "Atlanta Georgia",
                                       textAlign: TextAlign.end,
                                       style: GoogleFonts.limelight(
                                           color: Colors.black,

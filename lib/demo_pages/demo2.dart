@@ -13,7 +13,7 @@ class Demo2 extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/plane5.jpg"),
+            image: AssetImage("assets/images/demo2.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -21,12 +21,12 @@ class Demo2 extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(200, 50, 20, 0),
+                padding: const EdgeInsets.fromLTRB(200, 40, 20, 0),
                 child: Text(
-                  "Book travel and enjoy with BPE Air.",
+                  "Enjoy your vacation and travel on BPE Air.",
                   style: GoogleFonts.limelight(
                     fontSize: 17.0,
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -62,7 +62,7 @@ class Demo2 extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.fromLTRB(18, 12, 18, 18),
                         child: Text(
-                          "At BPE Air, Book a whole vacation package, where you will get resort booking, 5 stars hotel and much more all at BPE Air.",
+                          "When you book a vacation package, you will receive a round trip on a private flight and stay in a 5 star all inclusive amazing resort with BPE Air",
                           textAlign: TextAlign.justify,
                           style: GoogleFonts.limelight(
                             fontSize: 11,
@@ -71,7 +71,7 @@ class Demo2 extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 30),
+                      SizedBox(height: 15),
                       Container(
                         height: 40,
                         width: 220,

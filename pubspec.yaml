@@ -40,6 +40,12 @@ dependencies:
   bottom_navy_bar: any
   table_calendar: any
   intl: any
+  firebase_core: any
+  cloud_firestore: any
+  firebase_auth: any
+  shared_preferences: any
+  flutter_secure_storage: any
+
 
 
 

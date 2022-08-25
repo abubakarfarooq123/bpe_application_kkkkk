@@ -211,7 +211,7 @@ class _VacationState extends State<Vacation> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(90, 15, 0, 0),
                             child: Text(
-                              "Atlanta Katama",
+                              "Atlanta Georgia",
                               textAlign: TextAlign.end,
                               style: GoogleFonts.limelight(
                                 color: Colors.black,

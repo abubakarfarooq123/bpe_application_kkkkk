@@ -1,5 +1,4 @@
 import 'package:bpe_application/trip/vacation.dart';
-import 'package:bpe_application/trip/view_trip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -204,7 +203,7 @@ class _Custom_OptionState extends State<Custom_Option> {
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(65, 15, 0, 0),
                                       child: Text(
-                                        "Atlanta Katama",
+                                        "Atlanta Georgia",
                                         textAlign: TextAlign.end,
                                         style: GoogleFonts.limelight(
                                           color: Colors.black,
@@ -264,7 +263,7 @@ class _Custom_OptionState extends State<Custom_Option> {
                         ),
                       ),
                       SizedBox(
-                        height: 35,
+                        height: 60,
                       ),
                       Container(
                         height: 40,

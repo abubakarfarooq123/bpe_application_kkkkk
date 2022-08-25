@@ -86,7 +86,7 @@ class _HomeState extends State<Home> {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 4),
+                            SizedBox(height: 9),
                             Row(
                               children: [
                                 Expanded(
@@ -103,7 +103,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: 13),
                             Row(
                               mainAxisAlignment:
                               MainAxisAlignment.spaceBetween,
@@ -111,10 +111,10 @@ class _HomeState extends State<Home> {
                                 SizedBox(
                                   width: 100,
                                     child: Text(
-                                      "Kata",
+                                      "Atlanta Georgia",
                                       style: GoogleFonts.limelight(
                                         color: Colors.black,
-                                        fontSize: 12,
+                                        fontSize: 11,
                                       ),
                                     ),
                                   ),
@@ -194,7 +194,7 @@ class _HomeState extends State<Home> {
                               bottomRight: Radius.circular(16)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                           child: Column(
                             children: [
                               Row(
@@ -213,7 +213,7 @@ class _HomeState extends State<Home> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 13),
                               Row(
                                 children: [
                                   Text(
@@ -228,7 +228,7 @@ class _HomeState extends State<Home> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 11),
                               Row(
                                 mainAxisAlignment:
                                 MainAxisAlignment.spaceBetween,
@@ -239,7 +239,7 @@ class _HomeState extends State<Home> {
                                         "Puerto Vallarta ",
                                         style: GoogleFonts.limelight(
                                           color: Colors.black,
-                                          fontSize: 12,
+                                          fontSize: 11,
                                         ),
                                       ),
                                   ),
