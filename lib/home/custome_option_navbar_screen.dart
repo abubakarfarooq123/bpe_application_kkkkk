@@ -1,6 +1,5 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:bpe_application/chat/chat.dart';
-import 'package:bpe_application/home/home.dart';
 import 'package:bpe_application/trip/trip.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -33,7 +32,7 @@ class _CustomOptionNavBarState extends State<CustomOptionNavBar> {
         children: <Widget>[
           const Custom_Option(),
           const Trip(),
-          const Chat(),
+          chat(),
           const Profile(),
         ],
       ),
