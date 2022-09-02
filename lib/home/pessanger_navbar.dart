@@ -33,7 +33,7 @@ class _PessengerNavBarState extends State<PessengerNavBar> {
         children: <Widget>[
           const Pessenger(),
           const Trip(),
-          const Chat(),
+          chat(),
           const Profile(),
         ],
       ),

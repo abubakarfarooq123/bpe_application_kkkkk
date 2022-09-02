@@ -32,7 +32,7 @@ class _BottomNavyBarState extends State<MyBottomNavyBar> {
         children: <Widget>[
           const Home(),
           const Trip(),
-          const Chat(),
+          chat(),
           const Profile(),
         ],
       ),

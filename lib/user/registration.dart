@@ -1,5 +1,4 @@
-import 'package:bpe_application/demo_pages/demo5.dart';
-import 'package:bpe_application/home/home.dart';
+import 'package:bpe_application/splashscreens/registersplash.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
           'name': name,
           'email': email,
           'phone': phone,
+          'status': "unavailable",
           "uid": FirebaseAuth.instance.currentUser?.uid,
         })
             .then((value) => print('User Added'))
@@ -65,7 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Demo5(),
+            builder: (context) => Rwaiting(),
           ),
         );
       } on FirebaseAuthException catch (e) {
@@ -348,7 +348,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
+                                    Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => Login()));

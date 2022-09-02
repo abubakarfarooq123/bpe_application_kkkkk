@@ -45,6 +45,17 @@ dependencies:
   firebase_auth: any
   shared_preferences: any
   flutter_secure_storage: any
+  firebase_storage: any
+  image_picker: ^0.8.3+3
+  uuid: any
+  path_provider: any
+  path: any
+  permission_handler: any
+  lite_rolling_switch: any
+  provider: any
+  flutter_spinkit: any
+
+
 
 
 

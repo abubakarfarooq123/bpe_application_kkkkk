@@ -1,5 +1,5 @@
-import 'package:bpe_application/home/home_navbar_screen.dart';
 import 'package:bpe_application/navbar/navbar.dart';
+import 'package:bpe_application/splashscreens/loginsplash.dart';
 import 'package:bpe_application/user/forgot.dart';
 import 'package:bpe_application/user/registration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class Login  extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -42,7 +43,7 @@ class _LoginState extends State<Login> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => homeNavBar(),
+          builder: (context) => Waiting(),
         ),
       );
     } on FirebaseAuthException catch (e) {
@@ -242,7 +243,7 @@ class _LoginState extends State<Login> {
                                         borderRadius: BorderRadius.circular(30.0),
                                       ),
                                       onPressed: () {
-                                        Navigator.push(
+                                        Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => MyBottomNavyBar()));
@@ -261,7 +262,7 @@ class _LoginState extends State<Login> {
                                 SizedBox(height: 10,),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
+                                    Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => Forget()));
@@ -289,7 +290,7 @@ class _LoginState extends State<Login> {
                                       ),),
                                       GestureDetector(
                                         onTap: () {
-                                          Navigator.push(
+                                          Navigator.pushReplacement(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>

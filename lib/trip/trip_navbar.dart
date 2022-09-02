@@ -32,7 +32,7 @@ class _TripNavBarState extends State<TripNavBar> {
         children: <Widget>[
           const Trip(),
           const Trip(),
-          const Chat(),
+          chat(),
           const Profile(),
         ],
       ),

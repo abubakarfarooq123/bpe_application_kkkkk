@@ -33,7 +33,7 @@ class _homeNavBarState extends State<homeNavBar> {
         children: <Widget>[
           const Home(),
           const Trip(),
-          const Chat(),
+          chat(),
           const Profile(),
         ],
       ),
