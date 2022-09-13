@@ -1,5 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:bpe_application/chat/chat.dart';
+import 'package:bpe_application/chat/inbox.dart';
 import 'package:bpe_application/home/passenger.dart';
 import 'package:bpe_application/trip/trip.dart';
 import 'package:flutter/material.dart';
@@ -31,9 +32,9 @@ class _PessengerNavBarState extends State<PessengerNavBar> {
       body: PageView(
         controller: _pageController,
         children: <Widget>[
-          const Pessenger(),
+            Pessenger(),
           const Trip(),
-          chat(),
+          Conversation(),
           const Profile(),
         ],
       ),

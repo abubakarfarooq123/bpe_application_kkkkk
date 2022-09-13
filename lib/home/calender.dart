@@ -1,27 +1,40 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:bpe_application/home/custom_option.dart';
-import 'package:bpe_application/home/passenger.dart';
 import 'package:bpe_application/home/pessanger_navbar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import 'custome_option_navbar_screen.dart';
 
 class Calender extends StatefulWidget {
-  const Calender({Key? key}) : super(key: key);
 
   @override
   State<Calender> createState() => _CalenderState();
 }
-
 class _CalenderState extends State<Calender> {
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
+
+
   static final DateTime month = DateTime.now();
+
+  var date='';
+
+  Future updateUser(
+   selectedDT
+      ) async {
+    DateTime selectedDT=selectedDay;
+    await FirebaseFirestore.instance
+        .collection("Book")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .update({
+      'date': selectedDT,
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +49,11 @@ class _CalenderState extends State<Calender> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         title: Padding(
-          padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
+          padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
           child: Text("Pick a Date",
-          style: GoogleFonts.limelight(
+          style: GoogleFonts.roboto(
             fontSize: 25,
+            fontWeight: FontWeight.bold
           ),),
         ),
       ),
@@ -57,11 +71,12 @@ class _CalenderState extends State<Calender> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(5, 10, 240, 20),
+                  padding: const EdgeInsets.fromLTRB(5, 10, 220, 20),
                   child: Text("${DateFormat('MMMM').format(DateTime.now())}",
-                  style: GoogleFonts.limelight(
+                  style: GoogleFonts.roboto(
                     color: Colors.blue.shade900,
                     fontSize: 20,
+                    fontWeight: FontWeight.bold
                   ),
                   ),
                 ),
@@ -74,8 +89,10 @@ class _CalenderState extends State<Calender> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 10, 30, 5),
                             child: Text("Depart",
-                            style: GoogleFonts.limelight(
-                              color: Colors.black
+                            style: GoogleFonts.roboto(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
 
                             ),),
                           ),
@@ -83,10 +100,12 @@ class _CalenderState extends State<Calender> {
                             height: 10,
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 8, 5, 0),
+                            padding: const EdgeInsets.fromLTRB(5, 8, 5, 0),
                             child: Text("${DateFormat('yMd').format(selectedDay)}",
-                              style: GoogleFonts.limelight(
-                                color: Colors.black
+                              style: GoogleFonts.roboto(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
                               ),),
                           ),
                         ],
@@ -96,7 +115,9 @@ class _CalenderState extends State<Calender> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(170, 10, 0, 5),
                             child: Text("Return",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
 
                               ),),
                           ),
@@ -106,7 +127,7 @@ class _CalenderState extends State<Calender> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(165,10,0,5),
                             child: Text("------------",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                               ),),
                           ),
                         ],
@@ -120,6 +141,7 @@ class _CalenderState extends State<Calender> {
                     focusedDay: selectedDay,
                       firstDay: DateTime(2021),
                       lastDay: DateTime(2050),
+
                     calendarFormat: format,
                     onFormatChanged: (CalendarFormat _format){
                     setState(() {
@@ -170,15 +192,19 @@ class _CalenderState extends State<Calender> {
                     ),
                     color: Color.fromARGB(255, 218, 162, 16),
                     onPressed: () {
+                      setState(() {
+                        updateUser(selectedDay);
+                      });
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PessengerNavBar()));
+                              builder: (context) => PessengerNavBar(
+                              )));
 
                     },
                     child: Text(
                       'Done',
-                      style: GoogleFonts.limelight(
+                      style: GoogleFonts.roboto(
                         fontSize: 18.0,
                         color: Colors.white,
                       ),

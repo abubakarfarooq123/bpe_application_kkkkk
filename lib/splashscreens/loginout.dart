@@ -1,29 +1,26 @@
 import 'dart:async';
-import 'package:bpe_application/demo_pages/demo5.dart';
 import 'package:bpe_application/user/login.dart';
-import 'package:bpe_application/user/phoneOTP.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-
-class Rwaiting extends StatefulWidget {
-  const Rwaiting({Key? key}) : super(key: key);
+class LoginOut extends StatefulWidget {
+  const LoginOut({Key? key}) : super(key: key);
 
   @override
-  _RwaitingState createState() => _RwaitingState();
+  _LoginOutState createState() => _LoginOutState();
 }
 
-class _RwaitingState extends State<Rwaiting> {
+class _LoginOutState extends State<LoginOut> {
   @override
   void initState() {
     super.initState();
     Timer(Duration(seconds: 2), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => Login()));
-    });
+    }
+    );
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -31,15 +28,15 @@ class _RwaitingState extends State<Rwaiting> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SpinKitCircle(
+            SpinKitDoubleBounce(
               color: Colors.black,
               size: 100.0,
             ),
             SizedBox(
-              height: 20,
+              height: 20.0,
             ),
             Text(
-              'Registrating ID',
+              'Loging Out',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20.0,

@@ -1,3 +1,4 @@
+import 'package:bpe_application/home/home_navbar_screen.dart';
 import 'package:bpe_application/navbar/navbar.dart';
 import 'package:bpe_application/splashscreens/loginsplash.dart';
 import 'package:bpe_application/user/forgot.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login  extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -209,13 +211,17 @@ class _LoginState extends State<Login> {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30.0),
                                       ),
-                                      onPressed: () {
+                                      onPressed: () async {
                                         if (formkey.currentState!.validate()) {
                                           setState(() {
                                             email = emailController.text;
                                             password = passwordController.text;
                                           });
                                           userlogin();
+                                          SharedPreferences prefs = await SharedPreferences.getInstance();
+                                          prefs.setString('email', 'useremail@gmail.com');
+                                          Navigator.pushReplacement(context,
+                                              MaterialPageRoute(builder: (BuildContext ctx) => homeNavBar()));
                                         }
                                       },
                                       color: Color.fromARGB(1000, 218, 162, 16),

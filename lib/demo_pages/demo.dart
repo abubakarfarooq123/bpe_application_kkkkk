@@ -24,7 +24,7 @@ class Demo extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(40, 70, 20, 0),
               child: Text(
                 "Make trip planning easier and safer with BPE Air.",
-                style: GoogleFonts.limelight(
+                style: GoogleFonts.roboto(
                   fontSize: 17.0,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -44,8 +44,8 @@ class Demo extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(100, 50, 100, 0),
               child: Text(
               "BPE Air.",
-              style: GoogleFonts.limelight(
-                fontSize: 17.0,
+              style: GoogleFonts.roboto(
+                fontSize: 18.0,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
@@ -58,8 +58,8 @@ class Demo extends StatelessWidget {
           Center(
         child: Text(
                 "The best host for your amazing memories.",
-                style: GoogleFonts.limelight(
-                  fontSize: 10.0,
+                style: GoogleFonts.roboto(
+                  fontSize: 11.0,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -86,7 +86,7 @@ class Demo extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "Skip",
-                    style: GoogleFonts.limelight(
+                    style: GoogleFonts.roboto(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),

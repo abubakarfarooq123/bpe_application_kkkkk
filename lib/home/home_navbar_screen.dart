@@ -1,5 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:bpe_application/chat/chat.dart';
+import 'package:bpe_application/chat/inbox.dart';
 import 'package:bpe_application/home/home.dart';
 import 'package:bpe_application/trip/trip.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _homeNavBarState extends State<homeNavBar> {
         children: <Widget>[
           const Home(),
           const Trip(),
-          chat(),
+          Conversation(),
           const Profile(),
         ],
       ),

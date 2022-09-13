@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class Edit_Profile extends StatefulWidget {
   const Edit_Profile({Key? key}) : super(key: key);
@@ -19,176 +20,94 @@ class Edit_Profile extends StatefulWidget {
 
 class _Edit_ProfileState extends State<Edit_Profile> {
   // File? imageFile;
-  // String? downloadURL;
-  // // Future getImage(ImageSource source,context) async {
-  // //   await ImagePicker().pickImage(source: source).then((xFile) {
-  // //     if (xFile != null) {
-  // //       setState(() {
-  // //         imageFile = File(xFile.path);
-  // //       });
-  // //       _uploadImage(context);
-  // //     }
-  // //     Navigator.of(context).pop();
-  // //   });
-  // // }
-  // //
-  // // // Future uploadImage() async {
-  // // //   Reference firebaseStorageRef =
-  // // //   FirebaseStorage.instance.ref().child("$imageFile");
-  // // //   final UploadTask task = firebaseStorageRef.putFile(imageFile!);
-  // // //
-  // // //   task.whenComplete(() async {
-  // // //     try {
-  // // //       downloadURL = await firebaseStorageRef.getDownloadURL();
-  // // //       print("this is url $downloadURL");
-  // // //     } catch (onError) {
-  // // //       print("Error");
-  // // //     }
-  // // //   });
-  // // // }
-  // //
-  // //
-  // //
-  // //
-  // // // var imageFile;
-  // // // var downloadURL;
-  // // // Future getImage(ImageSource source, context) async {
-  // // //   final XFile? pickedImage = await ImagePicker().pickImage(source: source);
-  // // //     if (pickedImage != null) {
-  // // //       setState(() {
-  // // //         imageFile = pickedImage.path;
-  // // //       });
-  // // //       uploadImage();
-  // // //     }
-  // // //     Navigator.of(context).pop();
-  // // //
-  // // // }
-  // // //
-  // // // // Future pickImage() async{
-  // // // //   final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-  // // // //   if(image == null) return;
-  // // // //   final imageTemp = (File(image.path));
-  // // // // }
-  // // //
-  // // // Future uploadImage() async {
-  // // //   Reference firebaseStorageRef =
-  // // //   FirebaseStorage.instance.ref().child("UserImages");
-  // // //   final UploadTask task = firebaseStorageRef.putFile(imageFile);
-  // // //
-  // // //   task.whenComplete(() async {
-  // // //     try {
-  // // //       downloadURL = await firebaseStorageRef.getDownloadURL();
-  // // //       print("this is url $downloadURL");
-  // // //     } catch (onError) {
-  // // //       print("Error");
-  // // //     }
-  // // //   });
-  // // // }
-  // //
-  // // // TODO Upload Image To Firebase Database
-  // // Future _uploadImage(context) async {
-  // //   final file = File(imageFile!.path);
-  // //   final destination = "Mobile_Images/${DateTime.now()}.png";
-  // //   if (imageFile != null) {
-  // //     Reference reference =
-  // //     FirebaseStorage.instance.ref("Images").child(destination);
-  // //     UploadTask _uploadTask = reference.putFile(file);
-  // //     _uploadTask.whenComplete(() async {
-  // //       try {
-  // //         String uploadedImageUrl = await reference.getDownloadURL();
-  // //         downloadURL = uploadedImageUrl;
-  // //         print("This is URL: $uploadedImageUrl");
-  // //       } catch (e) {
-  // //         print(e.toString());
-  // //       }
-  // //     });
-  // //   } else {
-  // //     Navigator.of(context).pop();
-  // //   }
-  // // }
+  // var downloadURL;
+  String? url;
+  uploadImage() async {
+    final _firebaseStorage = FirebaseStorage.instance;
+    final _imagePicker = ImagePicker();
+    PickedFile image;
+
+    //Check Permissions
+    await Permission.photos.request();
+    var permissionStatus = await Permission.photos.status;
+    if (permissionStatus.isGranted) {
+      //Select Image
+      image = (await _imagePicker.getImage(source: ImageSource.gallery))!;
+      var file = File(image.path);
+      int uploadTimestamp = DateTime.now().millisecondsSinceEpoch;
+      if (image != (null)) {
+        Reference ref =
+        _firebaseStorage.ref().child('profileImages/$uploadTimestamp');
+        UploadTask uploadTask = ref.putFile(file);
+
+        var imageUrl = await (await uploadTask).ref.getDownloadURL();
+        setState(() {
+          url = imageUrl.toString();
+        });
+      } else {
+        print('No Image Path Received');
+      }
+    } else {
+      print('Permission not granted. Try Again with permission access');
+    }
+  }
+  addImage() async {
+    final _firebaseStorage = FirebaseStorage.instance;
+    final _imagePicker = ImagePicker();
+    PickedFile image;
+
+    //Check Permissions
+    await Permission.photos.request();
+    var permissionStatus = await Permission.photos.status;
+    if (permissionStatus.isGranted) {
+      //Select Image
+      image = (await _imagePicker.getImage(source: ImageSource.camera))!;
+      var file = File(image.path);
+      int uploadTimestamp = DateTime.now().millisecondsSinceEpoch;
+      if (image != (null)) {
+        Reference ref =
+        _firebaseStorage.ref().child('profileImages/$uploadTimestamp');
+        UploadTask uploadTask = ref.putFile(file);
+
+        var imageUrl = await (await uploadTask).ref.getDownloadURL();
+        setState(() {
+          url = imageUrl.toString();
+        });
+      } else {
+        print('No Image Path Received');
+      }
+    } else {
+      print('Permission not granted. Try Again with permission access');
+    }
+  }
+  // Future getImage(ImageSource source,context) async {
+  //   await ImagePicker().pickImage(source: source).then((xFile) {
+  //     if (xFile != null) {
+  //       setState(() {
+  //         imageFile = File(xFile.path);
+  //       });
+  //       uploadImage();
+  //     }
+  //     Navigator.of(context).pop();
   //
-  // // TODO Pick Image From Gallery
-  // // String imageUrl = "";
-  //
-  // void pickImage() async {
-  //   final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-  //   Reference ref = FirebaseStorage.instance.ref().child("profileImages.jpg");
-  //   await ref.putFile(File(image!.path));
-  //   ref.getDownloadURL().then((value) {
-  //     print(value);
-  //     setState(() {
-  //       imageFile = value as File?;
-  //     });
   //   });
   // }
   //
-  // // /// Active image file
-  // // File? _imageFile;
-  // // String? imageSnap;
-  // //
-  // // /// Update an image via gallery
-  // // Future _pickImage(ImageSource source) async {
-  // //   final XFile? selected = await ImagePicker().pickImage(source: source);
-  // //   final File myImageFile = File(selected!.path);
-  // //   setState(() {
-  // //     _imageFile = myImageFile;
-  // //   });
-  // //
-  // //   _uploadImage(context);
-  // // }
-  // //
-  // // /// Update to Firebase
-  // // Future _uploadImage(context) async {
-  // //   final file = File(_imageFile!.path);
-  // //   final destination = "Mobile_Images/${DateTime.now()}.png";
-  // //   if (_imageFile != null) {
-  // //     Reference reference =
-  // //         FirebaseStorage.instance.ref(email).child(destination);
-  // //     UploadTask _uploadTask = reference.putFile(file);
-  // //     _uploadTask.whenComplete(() async {
-  // //       try {
-  // //         String uploadedImageUrl = await reference.getDownloadURL();
-  // //         imageSnap = uploadedImageUrl;
-  // //         print("This is URL: http://$imageSnap");
-  // //       } catch (e) {
-  // //         print(e);
-  // //       }
-  // //     });
-  // //   } else {
-  // //     ScaffoldMessenger.of(context).showSnackBar(
-  // //         SnackBar(content: Text("Grant Permission and try again !")));
-  // //     Navigator.of(context).pop();
-  // //   }
-  // // }
-
-  // TODO Upload Image
-  /// Active image file
-  File? _imageFile;
-  String? imageSnap;
-
-  /// Select an image via gallery
-  Future pickImage(ImageSource source) async {
-    XFile? selected = (await ImagePicker().pickImage(source: source)) as XFile;
-    // setState(() {
-    //   _imageFile = selected;
-    // });
-    /// Upload Image to Firebase
-    final file = File(selected.path);
-    final destination = "${email}/${DateTime.now()}.png";
-    Reference reference =
-    FirebaseStorage.instance.ref("Profile_Images").child(destination);
-    UploadTask _uploadTask = reference.putFile(file);
-    _uploadTask.whenComplete(() async {
-      try {
-        String uploadedImageUrl = await reference.getDownloadURL();
-        imageSnap = uploadedImageUrl;
-        // showToaster("Image uploaded successfully");
-        print("This is URL: $imageSnap");
-      } catch (e) {
-        print(e.toString());
-      }
-    });
-  }
+  // Future uploadImage() async {
+  //   Reference firebaseStorageRef =
+  //   FirebaseStorage.instance.ref().child("UserImages");
+  //   final UploadTask task = firebaseStorageRef.putFile(imageFile!);
+  //
+  //   task.whenComplete(() async {
+  //     try {
+  //       downloadURL = await firebaseStorageRef.getDownloadURL();
+  //       print("this is url $downloadURL");
+  //     } catch (onError) {
+  //       print("Error");
+  //     }
+  //
+  //   });
+  // }
 
   final _formkey = GlobalKey<FormState>();
   var email = '';
@@ -197,11 +116,11 @@ class _Edit_ProfileState extends State<Edit_Profile> {
   String image = '';
 
   Future updateUser(
-    name,
-    email,
-    phone,
-    image,
-  ) async {
+      name,
+      email,
+      phone,
+      image,
+      ) async {
     await FirebaseFirestore.instance
         .collection("registration")
         .doc(FirebaseAuth.instance.currentUser?.uid)
@@ -209,13 +128,15 @@ class _Edit_ProfileState extends State<Edit_Profile> {
       'name': name,
       'email': email,
       'phone': phone,
-      'Image': imageSnap
+      'Image': url,
+
     });
   }
 
   @override
   void dispose() {
     super.dispose();
+
   }
 
   Widget build(BuildContext context) {
@@ -256,6 +177,7 @@ class _Edit_ProfileState extends State<Edit_Profile> {
               email = data!['email'];
               name = data['name'];
               phone = data['phone'];
+              image = data['Image'];
               return Form(
                 key: _formkey,
                 child: Container(
@@ -278,51 +200,26 @@ class _Edit_ProfileState extends State<Edit_Profile> {
                         child: Stack(
                           fit: StackFit.loose,
                           children: <Widget>[
-                            Row(
+                            new Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                imageSnap == null
-                                    ? CircularProgressIndicator()
+                                url != null
+                                    ? CircleAvatar(
+                                  radius: 80.0,
+                                  backgroundImage: NetworkImage(url!),
+                                )
+                                    : image != ''
+                                    ? CircleAvatar(
+                                  radius: 80.0,
+                                  backgroundImage: NetworkImage(image),
+                                )
                                     : CircleAvatar(
-                                        radius: 80.0,
-                                        child: ClipOval(
-                                            child: Image.network(imageSnap.toString())),
-                                      )
+                                  radius: 80.0,
+                                  backgroundColor: Colors.black,
+                                  backgroundImage: AssetImage(
+                                      'assets/images/user.png'),
+                                ),
                               ],
-                            ),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(top: 20.0),
-                                    child: new Stack(
-                                      fit: StackFit.loose,
-                                      children: <Widget>[
-                                        new Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            imageSnap != null
-                                                ? CircleAvatar(
-                                              radius: 80.0,
-                                              backgroundImage: NetworkImage(imageSnap.toString()),
-                                            )
-                                                : image != ''
-                                                ? CircleAvatar(
-                                              radius: 80.0,
-                                              backgroundImage: NetworkImage(image),
-                                            )
-                                                : CircleAvatar(
-                                              radius: 80.0,
-                                              backgroundColor: Colors.black,
-                                              backgroundImage: AssetImage(
-                                                  'assets/images/user.png'),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ]
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: 120.0, left: 90.0),
@@ -431,10 +328,10 @@ class _Edit_ProfileState extends State<Edit_Profile> {
                         ],
                       ),
 
-              ],
-              ),
+                    ],
+                  ),
 
-              ),
+                ),
               );
             },
           ),
@@ -470,7 +367,8 @@ class _Edit_ProfileState extends State<Edit_Profile> {
                 size: 30.0,
               ),
               onPressed: () {
-                pickImage(ImageSource.camera);
+                addImage();
+                Navigator.pop(context);
               },
               label: Text("Camera"),
             ),
@@ -484,7 +382,8 @@ class _Edit_ProfileState extends State<Edit_Profile> {
                 size: 30.0,
               ),
               onPressed: () {
-                pickImage(ImageSource.gallery);
+                uploadImage();
+                Navigator.pop(context);
               },
               label: Text("Gallery"),
             ),

@@ -1,8 +1,5 @@
 import 'dart:async';
 import 'dart:core';
-import 'dart:core';
-
-import 'package:bpe_application/demo_pages/demo5.dart';
 import 'package:bpe_application/demo_pages/splashscreen.dart';
 import 'package:bpe_application/home/home_navbar_screen.dart';
 import 'package:firebase_core/firebase_core.dart';

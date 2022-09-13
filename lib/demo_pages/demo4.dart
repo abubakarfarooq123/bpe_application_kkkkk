@@ -25,21 +25,21 @@ class _Demo4State extends State<Demo4> {
               child: Container(
                 height: 40,
                 width: 320,
+                // ignore: deprecated_member_use
                 child: FlatButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   color: Color.fromARGB(255, 218, 162, 16),
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => RegisterPage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => RegisterPage()));
+
                   },
                   child: Center(
                     child: Text(
                       "Create Account",
-                      style: GoogleFonts.limelight(
+                      style: GoogleFonts.roboto(
                         color: Colors.white,
                       ),
                     ),
@@ -52,6 +52,7 @@ class _Demo4State extends State<Demo4> {
               child: Container(
                 height: 40,
                 width: 320,
+                // ignore: deprecated_member_use
                 child: FlatButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
@@ -64,7 +65,7 @@ class _Demo4State extends State<Demo4> {
                   child: Center(
                     child: Text(
                       "Login",
-                      style: GoogleFonts.limelight(
+                      style: GoogleFonts.roboto(
                         color: Color.fromARGB(255, 218, 162, 16),
                       ),
                     ),
@@ -75,6 +76,7 @@ class _Demo4State extends State<Demo4> {
             Padding(
               padding: EdgeInsets.fromLTRB(40, 30, 40, 20),
               child: Center(
+                // ignore: deprecated_member_use
                 child: FlatButton(
                   onPressed: () {
                     Navigator.push(context,
@@ -82,7 +84,7 @@ class _Demo4State extends State<Demo4> {
                   },
                   child: Text(
                     "Later",
-                    style: GoogleFonts.limelight(
+                    style: GoogleFonts.roboto(
                       color: Color.fromARGB(255, 218, 162, 16),
                       fontWeight: FontWeight.w900,
                     ),
@@ -93,12 +95,13 @@ class _Demo4State extends State<Demo4> {
             Padding(
               padding: EdgeInsets.only(top: 30,left: 21,right: 8,bottom: 21),
               child: Center(
+                // ignore: deprecated_member_use
                 child: FlatButton(
                   onPressed: () {},
                   child: Text(
                     "By Using BPE's service, you must agree to our Terms & Conditions and applicable Privacy Policy ",
                     textAlign: TextAlign.justify,
-                    style: GoogleFonts.limelight(
+                    style: GoogleFonts.roboto(
                       color: Colors.white,
                       fontSize: 13,
                       letterSpacing: -0.4

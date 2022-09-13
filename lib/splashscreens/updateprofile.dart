@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bpe_application/home/home_navbar_screen.dart';
+import 'package:bpe_application/user/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -16,7 +17,7 @@ class _updatesplashState extends State<updatesplash> {
     super.initState();
     Timer(Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => homeNavBar()));
+          context, MaterialPageRoute(builder: (context) => Edit_Profile()));
     });
   }
 

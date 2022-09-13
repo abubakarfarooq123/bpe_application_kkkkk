@@ -1,15 +1,45 @@
 import 'package:bpe_application/payment/payment.dart';
+import 'package:bpe_application/user/login.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 class Vacation extends StatefulWidget {
-  const Vacation({Key? key}) : super(key: key);
+  final dc;
+  Vacation({required this.dc});
 
   @override
   State<Vacation> createState() => _VacationState();
 }
 
 class _VacationState extends State<Vacation> {
+
+  String formatted(timestamp){
+    var dateFromTimeStamp = DateTime.fromMillisecondsSinceEpoch(timestamp.seconds* 1000);
+    return DateFormat('dd-MM-yyyy').format(dateFromTimeStamp);
+  }
+
+  book() async {
+    await FirebaseFirestore.instance
+        .collection('Book')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("MyBook").doc()
+        .set({
+      'from': widget.dc.get('from'),
+      'to': widget.dc.get('to'),
+      'city1': widget.dc.get('city1'),
+      'city2': widget.dc.get('city2'),
+      'description': widget.dc.get('description'),
+      'total': widget.dc.get('total'),
+      'date': widget.dc.get('date'),
+      'passenger': widget.dc.get('passenger'),
+    })
+        .then((value) => print('User Added'))
+        .catchError((error) => print('Falied to add user: $error'));
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -25,7 +55,7 @@ class _VacationState extends State<Vacation> {
         title: Padding(
           padding: const EdgeInsets.fromLTRB(40,0,0,0),
           child: Text("Vacation Plan",
-          style: GoogleFonts.limelight(
+          style: GoogleFonts.roboto(
             fontSize: 25,
 
           ),),
@@ -61,19 +91,9 @@ class _VacationState extends State<Vacation> {
                       children: [
                         Text(
                           "BPE Air",
-                          style: GoogleFonts.limelight(
+                          style: GoogleFonts.roboto(
                             color: Colors.black,
                             fontSize: 13
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(200, 0, 0, 0),
-                          child: Text(
-                            "1390 Dollars",
-                            style: GoogleFonts.limelight(
-                                color: Colors.black,
-                              fontSize: 13,
-                            ),
                           ),
                         ),
                       ],
@@ -84,11 +104,12 @@ class _VacationState extends State<Vacation> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 255, 10),
+                        padding: const EdgeInsets.fromLTRB(0, 20, 270, 10),
                         child: Text("Itinerary",
-                          style: GoogleFonts.limelight(
+                          style: GoogleFonts.roboto(
                             color: Colors.black,
-                            fontSize: 15,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold
                           ),
                         ),
                       ),
@@ -97,9 +118,9 @@ class _VacationState extends State<Vacation> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(15, 15, 0, 0),
                             child: Text(
-                              "14 September 2022",
+                              formatted(widget.dc.get('date')),
                               textAlign: TextAlign.end,
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 13,
                               ),
@@ -109,7 +130,7 @@ class _VacationState extends State<Vacation> {
                             padding: const EdgeInsets.fromLTRB(80, 15, 0, 0),
                             child: Text("14 September 2022",
                               textAlign: TextAlign.end,
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 13,
                               ),
@@ -127,7 +148,7 @@ class _VacationState extends State<Vacation> {
                             child: Text(
                               "12:00 PM",
                               textAlign: TextAlign.end,
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 13,
                               ),
@@ -138,7 +159,7 @@ class _VacationState extends State<Vacation> {
                             child: Text(
                               "EFT 0h 21m",
                               textAlign: TextAlign.end,
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 13,
                               ),
@@ -148,7 +169,7 @@ class _VacationState extends State<Vacation> {
                             padding: const EdgeInsets.fromLTRB(75, 5, 0, 0),
                             child: Text("12:21 PM",
                               textAlign: TextAlign.end,
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 13,
                               ),
@@ -164,56 +185,20 @@ class _VacationState extends State<Vacation> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(18, 15, 0, 0),
                             child: Text(
-                              "OPKC",
+                              widget.dc.get('city1'),
                               textAlign: TextAlign.end,
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 13,
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(100, 15, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(120, 15, 0, 0),
                             child: Text(
-                              "-------------",
+                              widget.dc.get('city2'),
                               textAlign: TextAlign.end,
-                              style: GoogleFonts.limelight(
-                                color: Colors.black,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(95, 15, 0, 0),
-                            child: Text("OPKC",
-                              textAlign: TextAlign.end,
-                              style: GoogleFonts.limelight(
-                                color: Colors.black,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(18, 15, 0, 0),
-                            child: Text(
-                              "Mexico Punta Mita",
-                              textAlign: TextAlign.end,
-                              style: GoogleFonts.limelight(
-                                color: Colors.black,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(90, 15, 0, 0),
-                            child: Text(
-                              "Atlanta Georgia",
-                              textAlign: TextAlign.end,
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 13,
                               ),
@@ -239,62 +224,25 @@ class _VacationState extends State<Vacation> {
                         ),
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(150, 20, 0, 0),
-                            child: Text("80 Dollars per day",style: GoogleFonts.limelight(
-                              color: Colors.black,
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 16,
-                          ),
-                          Text("Reviews",style: GoogleFonts.limelight(
-                            color: Colors.black26,
-                            fontSize: 13,
-                          ),
-                          ),
-                        ],
-                      ),
+
                       SizedBox(height: 4),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(110, 5, 0, 0),
-                                child: Icon(Icons.star_border, color: Colors.black, size: 20,),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 5, 30, 0),
-                                child: Text("3.7  | 728 reviews total",
-                                  textAlign: TextAlign.end,
-                                  style: GoogleFonts.limelight(
-                                    color: Colors.black,
-                                    fontSize: 10,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 30, 250, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 30, 270, 0),
                             child: Text("Description",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                   color: Colors.black,
                                 fontSize: 15
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
-                            child: Text("Hotel located in mexico and already had recomendation from mexico..........",
-                              style: GoogleFonts.limelight(
+                            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                            child: Text(widget.dc.get('description'),
+                              textAlign: TextAlign.justify,
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 13
                               ),
@@ -318,15 +266,15 @@ class _VacationState extends State<Vacation> {
                             children: [
                               Padding(padding: EdgeInsets.fromLTRB(22, 10, 0, 0),
                                 child: Text("Total price",
-                                  style: GoogleFonts.limelight(
+                                  style: GoogleFonts.roboto(
                                     fontSize: 12,
                                     color: Colors.black,
                                   ),
                                 ),
                               ),
                               Padding(padding: EdgeInsets.fromLTRB(185, 10, 0, 0),
-                                child: Text("1329 Dollars",
-                                  style: GoogleFonts.limelight(
+                                child: Text(widget.dc.get('total'),
+                                  style: GoogleFonts.roboto(
                                     fontSize: 12,
                                     color: Colors.black,
                                   ),
@@ -334,9 +282,9 @@ class _VacationState extends State<Vacation> {
                               ),
                             ],
                           ),
-                          Padding(padding: EdgeInsets.fromLTRB(10, 25, 150, 0),
-                              child: Text("Include 3 days stay in resort",
-                                style: GoogleFonts.limelight(
+                          Padding(padding: EdgeInsets.fromLTRB(0, 25, 165, 0),
+                              child: Text("Include 4 days stay in resort",
+                                style: GoogleFonts.roboto(
                                   fontSize: 12,
                                   color: Colors.black,
                               ),
@@ -355,14 +303,22 @@ class _VacationState extends State<Vacation> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       color: Color.fromARGB(255, 218, 162, 16),
-                      onPressed: () { Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Payment())); },
+                      onPressed: () {
+                        setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Payment()));
+                          book();
+                          check();
+                        });
+
+
+                        },
                       child: Center(
                         child: Text(
                           "Book",
-                          style: GoogleFonts.limelight(
+                          style: GoogleFonts.roboto(
                             color: Colors.white,
                           ),
                         ),
@@ -380,5 +336,28 @@ class _VacationState extends State<Vacation> {
 
 
     );
+  }
+ void check(){
+    if(FirebaseAuth.instance.currentUser != null){
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => Payment()
+      ));
+    }else{
+      AlertDialog(
+        content: Text(
+          "You need to login First"
+      ),
+        actions: [ FlatButton(
+          onPressed: (){
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => Login()));
+          },
+          child: Text(
+            "Go Login First"
+          )
+        )
+   ]
+      );
+    }
   }
 }

@@ -24,7 +24,7 @@ class Demo2 extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(200, 40, 20, 0),
                 child: Text(
                   "Enjoy your vacation and travel on BPE Air.",
-                  style: GoogleFonts.limelight(
+                  style: GoogleFonts.almendra(
                     fontSize: 17.0,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -52,8 +52,8 @@ class Demo2 extends StatelessWidget {
                         child: Center(
                           child: new Text(
                             "Book a seat",
-                            style: GoogleFonts.limelight(
-                                fontSize: 17,
+                            style: GoogleFonts.roboto(
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
@@ -64,10 +64,10 @@ class Demo2 extends StatelessWidget {
                         child: Text(
                           "When you book a vacation package, you will receive a round trip on a private flight and stay in a 5 star all inclusive amazing resort with BPE Air",
                           textAlign: TextAlign.justify,
-                          style: GoogleFonts.limelight(
+                          style: GoogleFonts.roboto(
                             fontSize: 11,
                             color: Colors.white,
-                            letterSpacing: -0.5,
+                            letterSpacing: 0.5,
                           ),
                         ),
                       ),
@@ -87,7 +87,7 @@ class Demo2 extends StatelessWidget {
                           child: Center(
                             child: Text(
                               "Next",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),

@@ -1,11 +1,14 @@
 import 'package:bpe_application/splashscreens/registersplash.dart';
+import 'package:bpe_application/user/phoneOTP.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'login.dart';
+
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -58,6 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
           'phone': phone,
           'status': "unavailable",
           "uid": FirebaseAuth.instance.currentUser?.uid,
+          "Image": '',
         })
             .then((value) => print('User Added'))
             .catchError((error) => print('Falied to add user: $error'));
@@ -106,6 +110,8 @@ class _RegisterPageState extends State<RegisterPage> {
       ));
     }
   }
+  final countryPicker = const FlCountryCodePicker();
+  CountryCode? countryCode;
 
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -245,13 +251,51 @@ class _RegisterPageState extends State<RegisterPage> {
                         Padding(
                           padding: const EdgeInsets.all(18.0),
                           child: TextFormField(
-                              decoration: InputDecoration(
-                                hintText: 'Phone',
-                                icon: Icon(
-                                  FontAwesomeIcons.phone,
-                                  color: Color.fromARGB(255, 218, 162, 16),
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.done,
+                            maxLines: 1,
+                            decoration: InputDecoration(
+                              labelText: "Enter Phone Number",
+                              border: InputBorder.none,
+                              prefixIcon: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                                margin: const EdgeInsets.symmetric(horizontal: 8),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () async {
+                                        final code =  await countryPicker.showPicker(context: context);
+                                        setState(() {
+                                          countryCode=  code;
+                                        });
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            child: countryCode != null ? countryCode!.flagImage : null,
+                                          ),
+                                          const SizedBox(width: 10,),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                                            decoration: BoxDecoration(
+                                              color: Colors.black,
+                                              borderRadius: BorderRadius.circular(5)),
+                                            child: Text(
+                                              countryCode?.dialCode ?? "+1",
+                                                style: TextStyle(color: Colors.white),
+                                            ),
+
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+
+                                  ],
                                 ),
                               ),
+                              labelStyle: TextStyle(color: Colors.grey[600]),
+                            ),
                               controller: phoneController,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -259,7 +303,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                 }
                                 return null;
                               }),
-
                         ),
                         Padding(
                           padding: const EdgeInsets.all(18.0),
@@ -323,6 +366,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               }
 
                             },
+
                             child: Text(
                               'Register',
                               style: GoogleFonts.limelight(
@@ -341,7 +385,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text("Already Have an Accound? ",
+                                Text("Already Have an Account? ",
                                 style: GoogleFonts.limelight(
                                   color: Colors.black,
                                   fontSize: 13,

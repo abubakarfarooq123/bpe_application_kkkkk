@@ -1,10 +1,13 @@
 import 'package:bpe_application/id_verification/driving_license.dart';
 import 'package:bpe_application/id_verification/id_card.dart';
 import 'package:bpe_application/id_verification/passport_popup.dart';
+import 'package:bpe_application/splashscreens/sendingsplash.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 class ID_Verification extends StatefulWidget {
   const ID_Verification({Key? key}) : super(key: key);
 
@@ -13,7 +16,7 @@ class ID_Verification extends StatefulWidget {
 }
 
 class _ID_VerificationState extends State<ID_Verification> {
-  @override
+
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, //top bar color
@@ -83,7 +86,7 @@ class _ID_VerificationState extends State<ID_Verification> {
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           onPressed: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Passport_Pop_Up()));
@@ -201,4 +204,7 @@ class _ID_VerificationState extends State<ID_Verification> {
     );
 
   }
-}
+
+
+  }
+
