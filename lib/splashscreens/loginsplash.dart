@@ -36,7 +36,7 @@ class _WaitingState extends State<Waiting> {
                 height: 20,
               ),
               Text(
-                'Loging In',
+                'Logging In',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20.0,

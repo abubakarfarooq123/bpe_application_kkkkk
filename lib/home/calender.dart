@@ -7,33 +7,40 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-
 class Calender extends StatefulWidget {
-
   @override
   State<Calender> createState() => _CalenderState();
 }
+
 class _CalenderState extends State<Calender> {
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
 
+  DateTime dateupdate(dateend) {
+    var newDate = new DateTime(dateend.year, dateend.month, dateend.day + 4);
+    return newDate;
+  }
 
   static final DateTime month = DateTime.now();
 
-  var date='';
+  var date = '';
 
-  Future updateUser(
-   selectedDT
-      ) async {
-    DateTime selectedDT=selectedDay;
+  Future updateUser(selectedDT, selectEnd) async {
+    DateTime selectedDT = selectedDay;
+    DateTime selectEnd = dateupdate(selectedDay);
     await FirebaseFirestore.instance
         .collection("Book")
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .update({
       'date': selectedDT,
-
+      'enddate': selectEnd,
     });
+  }
+  String formatted(timestamp) {
+    var dateFromTimeStamp =
+    DateTime.fromMillisecondsSinceEpoch(timestamp.seconds * 1000);
+    return DateFormat('dd-MM-yyyy').format(dateFromTimeStamp);
   }
 
   @override
@@ -50,11 +57,11 @@ class _CalenderState extends State<Calender> {
         backgroundColor: Colors.transparent,
         title: Padding(
           padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
-          child: Text("Pick a Date",
-          style: GoogleFonts.roboto(
-            fontSize: 25,
-            fontWeight: FontWeight.bold
-          ),),
+          child: Text(
+            "Pick a Date",
+            style:
+                GoogleFonts.roboto(fontSize: 25, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
       body: ClipRRect(
@@ -72,12 +79,12 @@ class _CalenderState extends State<Calender> {
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(5, 10, 220, 20),
-                  child: Text("${DateFormat('MMMM').format(DateTime.now())}",
-                  style: GoogleFonts.roboto(
-                    color: Colors.blue.shade900,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
-                  ),
+                  child: Text(
+                    "${DateFormat('MMMM').format(DateTime.now())}",
+                    style: GoogleFonts.roboto(
+                        color: Colors.blue.shade900,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
                 Padding(
@@ -88,25 +95,28 @@ class _CalenderState extends State<Calender> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 10, 30, 5),
-                            child: Text("Depart",
-                            style: GoogleFonts.roboto(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-
-                            ),),
+                            child: Text(
+                              "Depart",
+                              style: GoogleFonts.roboto(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(5, 8, 5, 0),
-                            child: Text("${DateFormat('yMd').format(selectedDay)}",
+                            child: Text(
+                              "${DateFormat('yMd').format(selectedDay)}",
                               style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
-                              ),),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -114,68 +124,68 @@ class _CalenderState extends State<Calender> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.fromLTRB(170, 10, 0, 5),
-                            child: Text("Return",
+                            child: Text(
+                              "Return",
                               style: GoogleFonts.roboto(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
-
-                              ),),
+                              ),
+                            ),
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(165,10,0,5),
-                            child: Text("------------",
+                            padding: const EdgeInsets.fromLTRB(145, 10, 0, 5),
+                            child: Text(
+                              "${DateFormat('yMd').format(dateupdate(selectedDay))}",
                               style: GoogleFonts.roboto(
-                              ),),
+                                fontWeight: FontWeight.bold
+                              ),
+                            ),
                           ),
                         ],
                       )
-
                     ],
                   ),
                 ),
                 Expanded(
                   child: TableCalendar(
                     focusedDay: selectedDay,
-                      firstDay: DateTime(2021),
-                      lastDay: DateTime(2050),
-
+                    firstDay: DateTime(2021),
+                    lastDay: DateTime(2050),
                     calendarFormat: format,
-                    onFormatChanged: (CalendarFormat _format){
-                    setState(() {
-                      format = _format;
-                    });
+                    onFormatChanged: (CalendarFormat _format) {
+                      setState(() {
+                        format = _format;
+                      });
                     },
                     startingDayOfWeek: StartingDayOfWeek.sunday,
                     daysOfWeekVisible: true,
-                    onDaySelected: (DateTime selectDay, DateTime focusDay){
+                    onDaySelected: (DateTime selectDay, DateTime focusDay) {
                       setState(() {
                         selectedDay = selectDay;
                         focusedDay = focusDay;
                       });
                     },
                     calendarStyle: CalendarStyle(
-                      isTodayHighlighted: true,
-                    selectedDecoration: BoxDecoration(
-                      color: Colors.black,
-                      shape: BoxShape.circle,
-                    ),
-                      selectedTextStyle: TextStyle(color: Colors.white),
-                      todayDecoration: BoxDecoration(
-                        color: Colors.black,
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(5.0),
-                      )
-                    ),
+                        isTodayHighlighted: true,
+                        selectedDecoration: BoxDecoration(
+                          color: Colors.black,
+                          shape: BoxShape.circle,
+                        ),
+                        selectedTextStyle: TextStyle(color: Colors.white),
+                        todayDecoration: BoxDecoration(
+                          color: Colors.black,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(5.0),
+                        )),
                     headerStyle: HeaderStyle(
                       titleCentered: true,
                       formatButtonVisible: true,
                       formatButtonShowsNext: false,
-
                     ),
-                    selectedDayPredicate: (DateTime date){
+                    selectedDayPredicate: (DateTime date) {
                       return isSameDay(selectedDay, date);
                     },
                   ),
@@ -193,14 +203,12 @@ class _CalenderState extends State<Calender> {
                     color: Color.fromARGB(255, 218, 162, 16),
                     onPressed: () {
                       setState(() {
-                        updateUser(selectedDay);
+                        updateUser(selectedDay, dateupdate(selectedDay));
                       });
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PessengerNavBar(
-                              )));
-
+                              builder: (context) => PessengerNavBar()));
                     },
                     child: Text(
                       'Done',
@@ -211,13 +219,11 @@ class _CalenderState extends State<Calender> {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
         ),
       ),
-
     );
   }
 }

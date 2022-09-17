@@ -36,7 +36,7 @@ class _LoginOutState extends State<LoginOut> {
               height: 20.0,
             ),
             Text(
-              'Loging Out',
+              'Logging Out',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20.0,

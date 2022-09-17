@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:shimmer/shimmer.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -14,6 +14,18 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  bool enabled = true;
+
+  load() async{
+    await Future.delayed(Duration(seconds: 3));
+    setState(() {
+      enabled = false;
+    });
+  }
+  void initState() {
+    super.initState();
+    load();
+  }
   Widget list() {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection("flights").snapshots(),
@@ -36,7 +48,7 @@ class _HomeState extends State<Home> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Flight(
-                                          dc: snapshot.data!.docs[index],
+                                          dc: dc,
                                         )));
                           },
                           child: Container(
@@ -280,9 +292,42 @@ class _HomeState extends State<Home> {
           height: 800.0,
           width: double.infinity,
           color: Colors.grey.shade200,
-          child: list(),
+          child: Column(
+    mainAxisSize: MainAxisSize.max,
+    children: [
+    Expanded(
+    child: ListView.builder(
+    itemBuilder: (context, index) {
+      if (enabled) {
+        return Shimmer.fromColors(
+          baseColor: Colors.grey.shade300,
+          highlightColor: Colors.grey.shade100,
+          enabled: true,
+          child: ListTile(
+            title: Container(
+              color: Colors.white,
+              height: 10, width: 100,
+            ),
+            subtitle: Container(
+              color: Colors.white,
+              height: 10, width: 100,
+            ),
+            leading: CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.white,
+            ),
+          ),
+        );
+      } else {
+        return list();
+      }
+    }
+    ),
+    ),
+    ]
         ),
       ),
+    ),
     );
   }
 }

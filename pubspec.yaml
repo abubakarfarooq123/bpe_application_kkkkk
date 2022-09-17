@@ -70,6 +70,8 @@ dependencies:
   email_validator: any
   mobx: any
   get: any
+  fade_shimmer: any
+  shimmer: any
 
 
 

@@ -116,9 +116,9 @@ class _PessengerState extends State<Pessenger> {
                                               Padding(
                                                 padding:
                                                     const EdgeInsets.fromLTRB(
-                                                        45, 15, 0, 0),
+                                                        160, 15, 0, 0),
                                                 child: Text(
-                                                  "dc['date']",
+                                                  formatted(dc['enddate']),
                                                   textAlign: TextAlign.end,
                                                   style: GoogleFonts.roboto(
                                                       color: Colors.black,
@@ -308,8 +308,7 @@ class _PessengerState extends State<Pessenger> {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         Vacation(
-                                                          dc: snapshot.data!
-                                                              .docs[index],
+                                                          dc: dc,
                                                         )));
                                           },
                                           child: Center(
@@ -347,11 +346,10 @@ class _PessengerState extends State<Pessenger> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         title: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+          padding: const EdgeInsets.fromLTRB(75, 0, 0, 0),
           child: Text(
-            "Passenger Option",
-            style:
-                GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.bold),
+            "Flights",
+            style: GoogleFonts.roboto(color: Colors.white),
           ),
         ),
       ),
@@ -360,8 +358,12 @@ class _PessengerState extends State<Pessenger> {
           topLeft: const Radius.circular(40.0),
           topRight: const Radius.circular(40.0),
         ),
-        child: list(),
+        child: Container(
+          height: 800.0,
+          width: double.infinity,
+          color: Colors.grey.shade200,
+          child: list(),
+        ),
       ),
-    );
-  }
+    );  }
 }

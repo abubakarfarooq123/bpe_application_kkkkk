@@ -55,21 +55,12 @@ class _ID_VerificationState extends State<ID_Verification> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 50, 15, 0),
-                      child: Text("Select the document you wish to sacn.",
+                      child: Text("Scan Your Documents",
                         textAlign: TextAlign.justify,
-                        style: GoogleFonts.limelight(
+                        style: GoogleFonts.almendra(
                           color: Colors.black,
                           fontSize: 15,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(5, 30, 5, 0),
-                      child: Text("USA is the country of issuing  your documents.",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.limelight(
-                            color: Colors.black,
-                            fontSize: 15,
+                          fontWeight: FontWeight.bold
                         ),
                       ),
                     ),
@@ -112,7 +103,7 @@ class _ID_VerificationState extends State<ID_Verification> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
 
                     Center(
@@ -151,7 +142,7 @@ class _ID_VerificationState extends State<ID_Verification> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
 
                     Center(

@@ -69,11 +69,11 @@ class _PromoState extends State<Promo> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.fromLTRB(30, 30, 10, 0),
+                      padding: EdgeInsets.fromLTRB(30, 0, 10, 0),
                       child: Image.asset(
-                        "assets/images/gift.jpg",
-                        height: 350,
-                        width: 350,
+                        "assets/images/gift.png",
+                        height: 370,
+                        width: 370,
                       ),
                     ),
                     Column(

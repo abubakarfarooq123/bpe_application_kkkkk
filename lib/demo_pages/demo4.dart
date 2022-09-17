@@ -1,3 +1,5 @@
+
+
 import 'package:bpe_application/demo_pages/demo5.dart';
 import 'package:bpe_application/user/login.dart';
 import 'package:bpe_application/user/registration.dart';
@@ -102,9 +104,9 @@ class _Demo4State extends State<Demo4> {
                     "By Using BPE's service, you must agree to our Terms & Conditions and applicable Privacy Policy ",
                     textAlign: TextAlign.justify,
                     style: GoogleFonts.roboto(
-                      color: Colors.white,
-                      fontSize: 13,
-                      letterSpacing: -0.4
+                        color: Colors.white,
+                        fontSize: 13,
+                        letterSpacing: -0.4
                     ),
                   ),
                 ),

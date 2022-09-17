@@ -27,10 +27,8 @@ class _FlightState extends State<Flight> {
           'to': widget.dc.get('to'),
           'city1': widget.dc.get('city1'),
           'city2': widget.dc.get('city2'),
-          'description': description,
-          'total': total,
           'date':"",
-          'pessenger':"",
+      'enddate':"",
         })
         .then((value) => print('User Added'))
         .catchError((error) => print('Falied to add user: $error'));
@@ -56,26 +54,7 @@ class _FlightState extends State<Flight> {
             ),
           ),
         ),
-        body: FutureBuilder<DocumentSnapshot>(
-            future: FirebaseFirestore.instance
-                .collection('AddHotel')
-                .doc(FirebaseAuth.instance.currentUser!.uid)
-                .get(),
-            builder: (BuildContext context,
-                AsyncSnapshot<DocumentSnapshot> snapshot) {
-              if (snapshot.hasError) {
-                print('somthing went wrong');
-              }
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              var data = snapshot.data;
-              description = data!['description'];
-              total = data['total'];
-
-              return ClipRRect(
+        body: ClipRRect(
                 borderRadius: new BorderRadius.only(
                   topLeft: const Radius.circular(40.0),
                   topRight: const Radius.circular(40.0),
@@ -389,13 +368,27 @@ class _FlightState extends State<Flight> {
                                                 10, 20, 10, 0),
                                             child: Column(
                                               children: [
+                                                // Padding(
+                                                //   padding: const EdgeInsets.only(right: 230),
+                                                //   child: Text(
+                                                //     "Info.",
+                                                //     style: GoogleFonts.roboto(
+                                                //       fontWeight: FontWeight.bold,
+                                                //       fontSize: 20
+                                                //     ),
+                                                //   ),
+                                                // ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
                                                 Padding(
-                                                  padding: const EdgeInsets.only(right: 230),
+                                                  padding: const EdgeInsets.only(right:50),
                                                   child: Text(
-                                                    "Info.",
+                                                    "BPE Air Provides you with the best :",
                                                     style: GoogleFonts.roboto(
+                                                      color: Colors.black,
                                                       fontWeight: FontWeight.bold,
-                                                      fontSize: 20
+                                                      fontSize: 14
                                                     ),
                                                   ),
                                                 ),
@@ -403,7 +396,7 @@ class _FlightState extends State<Flight> {
                                                   height: 20,
                                                 ),
                                                 Text(
-                                                  description,
+                                                  "BPE provide a complete trip package. It provides 4 days trip plan with stay in 5 star hotel. BPE Air offers their guests the highest levels of luxury through personalized services, a vast range of amenities, and sophisticated accommodations.",
                                                   textAlign: TextAlign.justify,
                                                   style: GoogleFonts.roboto(
                                                       color: Colors.black,
@@ -461,7 +454,7 @@ class _FlightState extends State<Flight> {
                                         padding:
                                             EdgeInsets.fromLTRB(165, 15, 0, 0),
                                         child: Text(
-                                          total+" "+" Dollars",
+                                          "8000" +" "+" Dollars",
                                           style: GoogleFonts.roboto(
                                             fontSize: 12,
                                             color: Colors.black,
@@ -510,8 +503,9 @@ class _FlightState extends State<Flight> {
                     ),
                   ),
                 ),
-              );
-            }));
+              ),
+    );
+
   }
 }
 class MyBullet extends StatelessWidget{

@@ -1,12 +1,16 @@
 import 'dart:async';
 import 'dart:core';
+import 'dart:core';
+
+import 'package:bpe_application/demo_pages/demo5.dart';
 import 'package:bpe_application/demo_pages/splashscreen.dart';
 import 'package:bpe_application/home/home_navbar_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main(){
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
@@ -15,6 +19,7 @@ class MyApp extends StatelessWidget {
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   final storage = new FlutterSecureStorage();
 
+  
   Future<bool> checkLoginStatus() async {
     String? value = await storage.read(key: "uid");
     if(value == null){

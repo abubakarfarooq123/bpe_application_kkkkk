@@ -54,7 +54,7 @@ class _LoginState extends State<Login> {
           backgroundColor: Colors.orangeAccent,
           content: Text(
             'No User Found for that email',
-            style: GoogleFonts.limelight(
+            style: GoogleFonts.roboto(
               fontSize: 15.0,
               color: Colors.white,
             ),
@@ -65,7 +65,7 @@ class _LoginState extends State<Login> {
           backgroundColor: Colors.redAccent,
           content: Text(
             'Incorrect Password',
-            style: GoogleFonts.limelight(
+            style: GoogleFonts.roboto(
               fontSize: 15.0,
               color: Colors.white,
             ),
@@ -96,12 +96,13 @@ class _LoginState extends State<Login> {
                         width: 100,),
                       ),
                 Center(
-                    child: Padding(padding: EdgeInsets.fromLTRB(10, 40, 140, 30),
+                    child: Padding(padding: EdgeInsets.fromLTRB(10, 40, 190, 30),
                     child: Text(
                       "Welcome Back !!!",
-                      style:GoogleFonts.limelight(
+                      style:GoogleFonts.almendra(
                         fontSize: 20.0,
                         color: Colors.white,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                   ),
@@ -132,16 +133,17 @@ class _LoginState extends State<Login> {
                                 Padding(padding: EdgeInsets.fromLTRB(10, 10, 250, 10),
                                 child: Text(
                                     "Login",
-                                  style: GoogleFonts.limelight(
+                                  style: GoogleFonts.roboto(
                                     color: Colors.black,
-                                    fontSize: 14
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold
                                   ),
                                 ),
                                 ),
-                                Padding(padding: EdgeInsets.fromLTRB(25, 10, 130, 10),
+                                Padding(padding: EdgeInsets.fromLTRB(25, 10, 160, 10),
                                   child: Text(
                                     "Email or Phone Number",
-                                    style: GoogleFonts.limelight(
+                                    style: GoogleFonts.roboto(
                                         color: Colors.black,
                                       fontSize: 14
                                     ),
@@ -154,7 +156,7 @@ class _LoginState extends State<Login> {
                                       autofocus: false,
                                       decoration: InputDecoration(
                                         hintText: 'Enter Email ID or number',
-                                        errorStyle: GoogleFonts.limelight(
+                                        errorStyle: GoogleFonts.roboto(
                                           color: Colors.redAccent,
                                           fontSize: 15.0,
                                         ),
@@ -181,7 +183,7 @@ class _LoginState extends State<Login> {
                                       obscureText: true,
                                       decoration: InputDecoration(
                                         hintText: 'Password',
-                                        errorStyle: GoogleFonts.limelight(
+                                        errorStyle: GoogleFonts.roboto(
                                           color: Colors.redAccent,
                                           fontSize: 15.0,
                                         ),
@@ -218,8 +220,6 @@ class _LoginState extends State<Login> {
                                             password = passwordController.text;
                                           });
                                           userlogin();
-                                          SharedPreferences prefs = await SharedPreferences.getInstance();
-                                          prefs.setString('email', 'useremail@gmail.com');
                                           Navigator.pushReplacement(context,
                                               MaterialPageRoute(builder: (BuildContext ctx) => homeNavBar()));
                                         }
@@ -227,7 +227,7 @@ class _LoginState extends State<Login> {
                                       color: Color.fromARGB(1000, 218, 162, 16),
                                       child: Text(
                                         'Login',
-                                        style: GoogleFonts.limelight(
+                                        style: GoogleFonts.roboto(
                                           fontSize: 15.0,
                                           color: Colors.white,
                                         ),
@@ -257,7 +257,7 @@ class _LoginState extends State<Login> {
                                       color: Color.fromARGB(200, 246, 224, 195),
                                       child: Text(
                                         'Guest',
-                                        style: GoogleFonts.limelight(
+                                        style: GoogleFonts.roboto(
                                           fontSize: 15.0,
                                           color: Colors.white,
                                           ),
@@ -277,7 +277,7 @@ class _LoginState extends State<Login> {
                                     padding: const EdgeInsets.fromLTRB(3, 20, 180, 30),
                                     child: Text(
                                       'Forgot Password?',
-                                      style: GoogleFonts.limelight(
+                                      style: GoogleFonts.roboto(
                                         fontSize: 14.0,
                                         color: Color.fromARGB(255, 218, 162, 16),
                                       ),
@@ -290,7 +290,7 @@ class _LoginState extends State<Login> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Text("Don't have an account? ",
-                                      style: GoogleFonts.limelight(
+                                      style: GoogleFonts.roboto(
                                         color: Colors.grey,
                                         fontSize: 14
                                       ),),
@@ -304,7 +304,7 @@ class _LoginState extends State<Login> {
                                         },
                                         child: Text(
                                           "Sign Up",
-                                          style: GoogleFonts.limelight(
+                                          style: GoogleFonts.roboto(
                                             color: Color.fromARGB(255, 218, 162, 16),
                                             fontSize: 14
                                           ),

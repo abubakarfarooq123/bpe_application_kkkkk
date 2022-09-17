@@ -31,8 +31,8 @@ class _TripNavBarState extends State<TripNavBar> {
       body: PageView(
         controller: _pageController,
         children: <Widget>[
+          const Home(),
           const Trip(),
-          MessageInboxPage(),
           Conversation(),
           const Profile(),
         ],

@@ -192,7 +192,7 @@ class _Passport_Pop_UpState extends State<Passport_Pop_Up> {
                                 textInputAction: TextInputAction.done,
                                 decoration: InputDecoration(
                                     icon: Icon(Icons.calendar_today_rounded),
-                                    hintText: "Date of Expiry"),
+                                    hintText: "Date of Expiration"),
                                 onTap: () async {
                                   DateTime? pickeddate = await showDatePicker(
                                     context: context,
