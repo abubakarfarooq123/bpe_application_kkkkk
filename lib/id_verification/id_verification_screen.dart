@@ -1,13 +1,12 @@
+import 'package:bpe_application/id_verification/check_license.dart';
 import 'package:bpe_application/id_verification/driving_license.dart';
 import 'package:bpe_application/id_verification/id_card.dart';
+import 'package:bpe_application/id_verification/if_else_for_license.dart';
 import 'package:bpe_application/id_verification/passport_popup.dart';
-import 'package:bpe_application/splashscreens/sendingsplash.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 class ID_Verification extends StatefulWidget {
   const ID_Verification({Key? key}) : super(key: key);
 
@@ -33,7 +32,7 @@ class _ID_VerificationState extends State<ID_Verification> {
           padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
           child: Text(
             "ID Verification",
-            style: GoogleFonts.limelight(
+            style: GoogleFonts.roboto(
               fontSize: 20,
             ),
           ),
@@ -92,7 +91,7 @@ class _ID_VerificationState extends State<ID_Verification> {
                               ),
                               Text(
                                 'Passport',
-                                style: GoogleFonts.limelight(
+                                style: GoogleFonts.roboto(
                                   fontSize: 15.0,
                                   color: Colors.white,
                                 ),
@@ -131,7 +130,7 @@ class _ID_VerificationState extends State<ID_Verification> {
                               ),
                               Text(
                                 'License',
-                                style: GoogleFonts.limelight(
+                                style: GoogleFonts.roboto(
                                   fontSize: 15.0,
                                   color: Colors.white,
                                 ),
@@ -170,7 +169,7 @@ class _ID_VerificationState extends State<ID_Verification> {
                               ),
                               Text(
                                 'ID Card',
-                                style: GoogleFonts.limelight(
+                                style: GoogleFonts.roboto(
                                   fontSize: 15.0,
                                   color: Colors.white,
                                 ),

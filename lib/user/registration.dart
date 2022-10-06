@@ -1,5 +1,4 @@
 import 'package:bpe_application/splashscreens/registersplash.dart';
-import 'package:bpe_application/user/phoneOTP.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';

@@ -35,7 +35,7 @@ class _Edit_ProfileState extends State<Edit_Profile> {
       image = (await _imagePicker.getImage(source: ImageSource.gallery))!;
       var file = File(image.path);
       int uploadTimestamp = DateTime.now().millisecondsSinceEpoch;
-      if (image != (null)) {
+      if (image != null) {
         Reference ref =
         _firebaseStorage.ref().child('profileImages/$uploadTimestamp');
         UploadTask uploadTask = ref.putFile(file);
@@ -64,7 +64,7 @@ class _Edit_ProfileState extends State<Edit_Profile> {
       image = (await _imagePicker.getImage(source: ImageSource.camera))!;
       var file = File(image.path);
       int uploadTimestamp = DateTime.now().millisecondsSinceEpoch;
-      if (image != (null)) {
+      if (image != null) {
         Reference ref =
         _firebaseStorage.ref().child('profileImages/$uploadTimestamp');
         UploadTask uploadTask = ref.putFile(file);
@@ -149,7 +149,7 @@ class _Edit_ProfileState extends State<Edit_Profile> {
         backgroundColor: Colors.transparent,
         title: Text(
           "Profile",
-          style: GoogleFonts.limelight(
+          style: GoogleFonts.roboto(
             fontSize: 25.0,
             color: Colors.white,
           ),
@@ -295,32 +295,35 @@ class _Edit_ProfileState extends State<Edit_Profile> {
                             ),
                           ),
                           SizedBox(
-                            height: 130,
+                            height: 120,
                           ),
-                          Container(
-                            height: 40.0,
-                            width: 320.0,
-                            child: FlatButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30.0),
-                              ),
-                              color: Color.fromARGB(255, 218, 162, 16),
-                              onPressed: () {
-                                if (_formkey.currentState!.validate()) {
-                                  updateUser(name, email, phone, image);
-                                }
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => updatesplash()));
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 40.0,
+                              width: 280.0,
+                              child: FlatButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                ),
+                                color: Color.fromARGB(255, 218, 162, 16),
+                                onPressed: () {
+                                  if (_formkey.currentState!.validate()) {
+                                    updateUser(name, email, phone, image);
+                                  }
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => updatesplash()));
 
-                                    (route) => false;
-                              },
-                              child: Text(
-                                'Update',
-                                style: GoogleFonts.limelight(
-                                  fontSize: 17.0,
-                                  color: Colors.white,
+                                      (route) => false;
+                                },
+                                child: Text(
+                                  'Update',
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 17.0,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),

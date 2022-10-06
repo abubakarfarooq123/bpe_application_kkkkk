@@ -49,7 +49,7 @@ class _PromoState extends State<Promo> {
         backgroundColor: Colors.transparent,
         title: Text(
           "Promo Code",
-          style: GoogleFonts.limelight(
+          style: GoogleFonts.roboto(
             fontSize: 25.0,
             color: Colors.white,
           ),
@@ -69,23 +69,24 @@ class _PromoState extends State<Promo> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.fromLTRB(30, 0, 10, 0),
-                      child: Image.asset(
-                        "assets/images/gift.png",
-                        height: 370,
-                        width: 370,
+                      padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                        child: Image.asset(
+                          "assets/images/promo_car.jpg",
+                          height: 300,
+                          width: 300,
+                        ),
                       ),
-                    ),
                     Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 1, 15, 0),
+                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                           child: Text(
                             "Have BPE promo code?",
                             textAlign: TextAlign.justify,
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                               color: Colors.black,
-                              fontSize: 15,
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold
                             ),
                           ),
                         ),
@@ -93,7 +94,7 @@ class _PromoState extends State<Promo> {
                           padding: const EdgeInsets.fromLTRB(15, 30, 15, 0),
                           child: Text(
                             "Lucky you, enter it below to redeem your private flighty reward.",
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 13,
                                 letterSpacing: 0.8),
@@ -104,7 +105,7 @@ class _PromoState extends State<Promo> {
                           child: Column(
                           children:[
                             Padding(
-                            padding: const EdgeInsets.all(23.0),
+                            padding: const EdgeInsets.only(top: 50,left: 20,right: 20),
                             child: TextFormField(
                                 decoration: InputDecoration(
                                   hintText: 'Promo Code',
@@ -118,7 +119,7 @@ class _PromoState extends State<Promo> {
                                 }),
                           ),
                         SizedBox(
-                          height: 30,
+                          height: 120,
                         ),
                         Container(
                           height: 40.0,
@@ -145,7 +146,7 @@ class _PromoState extends State<Promo> {
                             },
                             child: Text(
                               'Activate',
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 fontSize: 17.0,
                                 color: Colors.white,
                               ),

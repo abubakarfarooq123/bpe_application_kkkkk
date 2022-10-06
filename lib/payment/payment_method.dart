@@ -30,7 +30,7 @@ class _Payment_MethodState extends State<Payment_Method> {
             padding: const EdgeInsets.fromLTRB(0, 0, 10,0),
               child: Text(
                 "Payment Method",
-                style: GoogleFonts.limelight(
+                style: GoogleFonts.roboto(
                   fontSize: 25,
 
               ),
@@ -54,7 +54,7 @@ class _Payment_MethodState extends State<Payment_Method> {
                   padding: EdgeInsets.fromLTRB(20, 50, 20, 0),
                   child: Text(
                     "You haven't link the card yet",
-                    style: GoogleFonts.limelight(
+                    style: GoogleFonts.roboto(
                       color: Colors.black,
                     ),
                   ),
@@ -92,7 +92,7 @@ class _Payment_MethodState extends State<Payment_Method> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 45, 20, 0),
                         child: Text("Add now",
-                        style: GoogleFonts.limelight(
+                        style: GoogleFonts.roboto(
                           color: Colors.black
                         ),),
                       ),
@@ -114,7 +114,7 @@ class _Payment_MethodState extends State<Payment_Method> {
                       },
                       child: Text(
                         "Not Yet",
-                        style: GoogleFonts.limelight(
+                        style: GoogleFonts.roboto(
                           color: Colors.black,
                           fontSize: 15,
                         ),
@@ -124,7 +124,7 @@ class _Payment_MethodState extends State<Payment_Method> {
                       width: 25,
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(100, 0, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(120, 0, 0, 0),
                       child: FlatButton(
                         onPressed: () {
                           Navigator.push(
@@ -134,7 +134,7 @@ class _Payment_MethodState extends State<Payment_Method> {
                         },
                         child: Text(
                           "Add Manually",
-                          style: GoogleFonts.limelight(
+                          style: GoogleFonts.roboto(
                             color: Colors.black,
                             fontSize: 15,
                           ),

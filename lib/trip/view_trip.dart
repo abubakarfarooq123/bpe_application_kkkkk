@@ -26,9 +26,9 @@ class _ViewTripState extends State<ViewTrip> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 30, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(20, 40, 0, 0),
                         child: Text("Enjoy your day",
-                        style: GoogleFonts.limelight(
+                        style: GoogleFonts.roboto(
                           fontSize: 20,
                           color: Colors.black,
                         ),),
@@ -36,7 +36,7 @@ class _ViewTripState extends State<ViewTrip> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
                         child: Text("James",
-                          style: GoogleFonts.limelight(
+                          style: GoogleFonts.roboto(
                               fontSize: 22,
                               color: Colors.black,
                           ),
@@ -58,10 +58,10 @@ class _ViewTripState extends State<ViewTrip> {
                         thickness: 5,
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 20, 50, 0),
+                        padding: const EdgeInsets.fromLTRB(10, 30, 50, 0),
                         child: Text("Thank you for requesting this private flight.",
                           textAlign: TextAlign.justify,
-                          style: GoogleFonts.limelight(
+                          style: GoogleFonts.roboto(
                               fontSize: 13,
                               color: Colors.black,
                           ),
@@ -71,7 +71,7 @@ class _ViewTripState extends State<ViewTrip> {
                         padding: const EdgeInsets.fromLTRB(10, 30, 10, 0),
                         child: Text("Our team will process your request. When flight is available you will receive an email or message in app message event.",
                           textAlign: TextAlign.justify,
-                          style: GoogleFonts.limelight(
+                          style: GoogleFonts.roboto(
                             fontSize: 13,
                             color: Colors.black,
                           ),
@@ -95,7 +95,7 @@ class _ViewTripState extends State<ViewTrip> {
                           child: Center(
                             child: Text(
                               "View My Trip",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.white,
                               ),
                             ),

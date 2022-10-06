@@ -29,7 +29,7 @@ class _Installment_PlanState extends State<Installment_Plan> {
           padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
           child: Text(
             "Installment Plan",
-            style: GoogleFonts.limelight(
+            style: GoogleFonts.roboto(
               fontSize: 20,
             ),
           ),
@@ -59,7 +59,7 @@ class _Installment_PlanState extends State<Installment_Plan> {
                 Padding(padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
                 child: Text("BPE Air provides you with installment plan so you can pay half payment a month before the flight and half just before taking off.",
                 textAlign: TextAlign.justify,
-                  style: GoogleFonts.limelight(
+                  style: GoogleFonts.roboto(
                   color: Colors.black,
                   fontSize: 13,
                     letterSpacing: 0.5
@@ -70,13 +70,13 @@ class _Installment_PlanState extends State<Installment_Plan> {
                 child: Row(
                   children: [
                     Text("Pay Full Expenses",
-                      style: GoogleFonts.limelight(
+                      style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 13
                       ),
                     ),
                     SizedBox(
-                      width: 150,
+                      width: 180,
                     ),
                     IconButton(onPressed: (){
                       Navigator.push(
@@ -96,13 +96,13 @@ class _Installment_PlanState extends State<Installment_Plan> {
               child: Row(
                 children: [
                   Text("Pay in Installment",
-                    style: GoogleFonts.limelight(
+                    style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 13
                     ),
                   ),
                   SizedBox(
-                    width: 140,
+                    width: 180,
                   ),
                   IconButton(onPressed: (){
                     Navigator.push(

@@ -14,18 +14,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool enabled = true;
-
-  load() async{
-    await Future.delayed(Duration(seconds: 3));
-    setState(() {
-      enabled = false;
-    });
-  }
-  void initState() {
-    super.initState();
-    load();
-  }
   Widget list() {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection("flights").snapshots(),
@@ -276,12 +264,13 @@ class _HomeState extends State<Home> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         title: Padding(
-          padding: const EdgeInsets.fromLTRB(75, 0, 0, 0),
+          padding: const EdgeInsets.fromLTRB(135, 0, 0, 0),
           child: Text(
             "Flights",
             style: GoogleFonts.roboto(color: Colors.white),
           ),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: ClipRRect(
         borderRadius: new BorderRadius.only(
@@ -292,40 +281,7 @@ class _HomeState extends State<Home> {
           height: 800.0,
           width: double.infinity,
           color: Colors.grey.shade200,
-          child: Column(
-    mainAxisSize: MainAxisSize.max,
-    children: [
-    Expanded(
-    child: ListView.builder(
-    itemBuilder: (context, index) {
-      if (enabled) {
-        return Shimmer.fromColors(
-          baseColor: Colors.grey.shade300,
-          highlightColor: Colors.grey.shade100,
-          enabled: true,
-          child: ListTile(
-            title: Container(
-              color: Colors.white,
-              height: 10, width: 100,
-            ),
-            subtitle: Container(
-              color: Colors.white,
-              height: 10, width: 100,
-            ),
-            leading: CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.white,
-            ),
-          ),
-        );
-      } else {
-        return list();
-      }
-    }
-    ),
-    ),
-    ]
-        ),
+          child: list(),
       ),
     ),
     );

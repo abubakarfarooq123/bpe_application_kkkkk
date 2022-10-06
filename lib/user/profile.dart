@@ -54,37 +54,6 @@ class _ProfileState extends State<Profile> {
       ));
       return Scaffold(
         backgroundColor: Colors.black,
-        appBar:PreferredSize(
-            preferredSize: Size.fromHeight(80.0), // here the desired height
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
-              child: AppBar(
-                backgroundColor: Colors.black,
-                title: Text(name,
-                  style: GoogleFonts.limelight(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-                leading: CircleAvatar(
-                    child: img != null
-                        ? CircleAvatar(
-                      radius: 80.0,
-                      backgroundImage: NetworkImage(img),
-                    )
-                        : img != ''
-                        ? CircleAvatar(
-                      radius: 80.0,
-                      backgroundImage: NetworkImage(img),
-                    )
-                        : CircleAvatar(
-                      radius: 80.0,
-                      backgroundColor: Colors.black,
-                      backgroundImage:
-                      AssetImage('assets/images/profile.png'),
-                    ))),
-              ),
-            ),
         body: ClipRRect(
           borderRadius: new BorderRadius.only(
             topLeft: const Radius.circular(40.0),
@@ -97,6 +66,53 @@ class _ProfileState extends State<Profile> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  CustomPaint(
+                    child: Container(
+                      height: 20,
+                    ),
+                    painter: HeaderCurvedContainer(),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                          name,
+                          style: GoogleFonts.roboto(
+                            fontSize: 17,
+                            letterSpacing: 1.5,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 150,
+                        width: 150,
+                        child: CircleAvatar(
+                            child: img != null
+                                ? CircleAvatar(
+                              radius: 80.0,
+                              backgroundImage: NetworkImage(img),
+                            )
+                                : img != ''
+                                ? CircleAvatar(
+                              radius: 80.0,
+                              backgroundImage: NetworkImage(img),
+                            )
+                                : CircleAvatar(
+                              radius: 80.0,
+                              backgroundColor: Colors.black,
+                              backgroundImage:
+                              AssetImage('assets/images/profile.png'),
+                            )),
+                      ),
+                    ],
+                  ),
                   Padding(
                     padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                     child: FlatButton(
@@ -113,12 +129,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 70,
+                            width: 80,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
                             child: Text(
                               "Verify Your ID",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -144,12 +160,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 70,
+                            width: 80,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(15, 10, 0, 10),
                             child: Text(
                               "Promo Code",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -175,12 +191,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 50,
+                            width: 70,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(15, 10, 0, 10),
                             child: Text(
                               "Payment Method",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -201,12 +217,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 25,
+                            width: 50,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(25, 10, 0, 10),
                             child: Text(
                               "Manage Notification",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -232,12 +248,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 70,
+                            width: 85,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(20, 10, 0, 10),
                             child: Text(
                               "Edit Profile",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -247,6 +263,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                   ),
+
                   Padding(
                     padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                     child: FlatButton(
@@ -263,12 +280,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 40,
+                            width: 65,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(20, 10, 0, 10),
                             child: Text(
                               "Frequent Location",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -278,6 +295,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                   ),
+
                   Padding(
                     padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                     child: FlatButton(
@@ -294,12 +312,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 70,
+                            width: 87,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
                             child: Text(
                               "Reset Password",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -309,6 +327,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                   ),
+
                   Padding(
                     padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                     child: FlatButton(
@@ -320,12 +339,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 70,
+                            width: 80,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(45, 10, 0, 10),
                             child: Text(
                               "F.A.Q",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -335,6 +354,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                   ),
+
                   Padding(
                     padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                     child: FlatButton(
@@ -346,12 +366,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 70,
+                            width: 80,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(45, 10, 0, 10),
                             child: Text(
                               "Legal",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -361,6 +381,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                   ),
+
                   Padding(
                     padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                     child: FlatButton(
@@ -372,12 +393,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 70,
+                            width: 80,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(45, 10, 0, 10),
                             child: Text(
                               "About",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -387,6 +408,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                   ),
+
                   Padding(
                     padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                     child: FlatButton(
@@ -398,12 +420,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 70,
+                            width: 75,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(25, 10, 0, 10),
                             child: Text(
                               "Call Help Desk",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -430,12 +452,12 @@ class _ProfileState extends State<Profile> {
                               size: 25,),
                           ),
                           SizedBox(
-                            width: 70,
+                            width: 80,
                           ),
                           Padding(padding: EdgeInsets.fromLTRB(45, 10, 0, 10),
                             child: Text(
                               "Log Out",
-                              style: GoogleFonts.limelight(
+                              style: GoogleFonts.roboto(
                                 color: Colors.black,
                                 fontSize: 15,
                               ),
@@ -458,4 +480,20 @@ class _ProfileState extends State<Profile> {
     );
 
   }
+}
+
+class HeaderCurvedContainer extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()..color = Colors.black;
+    Path path = Path()
+      ..relativeLineTo(0, 150)
+      ..quadraticBezierTo(size.width / 2, 225, size.width, 150)
+      ..relativeLineTo(0, -150)
+      ..close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

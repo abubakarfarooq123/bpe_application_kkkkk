@@ -79,7 +79,7 @@ class _Reset_PasswordState extends State<Reset_Password> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(10, 60, 10, 0),
                   child: Image.asset(
-                    "assets/images/lock.png",
+                    "assets/images/reset-key.jpeg",
                     height: 250,
                     width: 250,
                   ),

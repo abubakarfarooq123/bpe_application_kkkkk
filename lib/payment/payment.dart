@@ -44,7 +44,7 @@ class _PaymentState extends State<Payment> {
         title: Padding(
           padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
           child: Text("Payment",
-          style: GoogleFonts.limelight(
+          style: GoogleFonts.roboto(
             fontSize: 25,
           ),),
         ),
@@ -68,12 +68,13 @@ class _PaymentState extends State<Payment> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 30, 255, 10),
+                      padding: const EdgeInsets.fromLTRB(0, 30, 265, 10),
                       child: Text(
                         "Itinerary",
-                        style: GoogleFonts.limelight(
+                        style: GoogleFonts.roboto(
                           color: Colors.black,
                           fontSize: 15,
+                          fontWeight: FontWeight.bold
                         ),
                       ),
                     ),
@@ -84,18 +85,18 @@ class _PaymentState extends State<Payment> {
                           child: Text(
                             "14 September 2022",
                             textAlign: TextAlign.end,
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                               color: Colors.black,
                               fontSize: 13,
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(75, 25, 0, 0),
+                          padding: const EdgeInsets.fromLTRB(95, 25, 0, 0),
                           child: Text(
                             "14 September 2022",
                             textAlign: TextAlign.end,
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                               color: Colors.black,
                               fontSize: 13,
                             ),
@@ -113,7 +114,7 @@ class _PaymentState extends State<Payment> {
                           child: Text(
                             "12:00 PM",
                             textAlign: TextAlign.end,
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                               color: Colors.black,
                               fontSize: 13,
                             ),
@@ -124,7 +125,7 @@ class _PaymentState extends State<Payment> {
                           child: Text(
                             "EFT 0h 21m",
                             textAlign: TextAlign.end,
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                               color: Colors.black,
                               fontSize: 13,
                             ),
@@ -135,7 +136,7 @@ class _PaymentState extends State<Payment> {
                           child: Text(
                             "12:21 PM",
                             textAlign: TextAlign.end,
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                               color: Colors.black,
                               fontSize: 13,
                             ),
@@ -151,57 +152,20 @@ class _PaymentState extends State<Payment> {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(18, 25, 0, 0),
                           child: Text(
-                            "OPKC",
-                            textAlign: TextAlign.end,
-                            style: GoogleFonts.limelight(
-                              color: Colors.black,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(110, 25, 0, 0),
-                          child: Text(
-                            "-------------",
-                            textAlign: TextAlign.end,
-                            style: GoogleFonts.limelight(
-                              color: Colors.black,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(80, 25, 0, 0),
-                          child: Text(
-                            "OPKC",
-                            textAlign: TextAlign.end,
-                            style: GoogleFonts.limelight(
-                              color: Colors.black,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(18, 25, 0, 0),
-                          child: Text(
                             "Mexico Punta Mita",
                             textAlign: TextAlign.end,
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                               color: Colors.black,
                               fontSize: 13,
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(90, 25, 0, 0),
+                          padding: const EdgeInsets.fromLTRB(120, 25, 0, 0),
                           child: Text(
                             "Atlanta Georgia",
                             textAlign: TextAlign.end,
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                               color: Colors.black,
                               fontSize: 13,
                             ),
@@ -209,12 +173,13 @@ class _PaymentState extends State<Payment> {
                         ),
                       ],
                     ),
-                    Padding(padding: EdgeInsets.fromLTRB(10, 30, 130, 0),
+                    Padding(padding: EdgeInsets.fromLTRB(0, 30, 150, 0),
                     child: Text(
                       "Choose Payment Type",
-                      style: GoogleFonts.limelight(
+                      style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 17,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                     ),
@@ -226,7 +191,7 @@ class _PaymentState extends State<Payment> {
                         Padding(padding: EdgeInsets.fromLTRB(25, 10, 0, 0),
                         child: Text(
                           "Credit Card",
-                          style: GoogleFonts.limelight(
+                          style: GoogleFonts.roboto(
                             color: Colors.black,
                           ),
                         ),
@@ -247,7 +212,7 @@ class _PaymentState extends State<Payment> {
                         ),
                         Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child: Text("<-- Click Here",
-                        style: GoogleFonts.limelight(
+                        style: GoogleFonts.roboto(
                           color: Colors.black45
                         ),
                         )
@@ -267,18 +232,18 @@ class _PaymentState extends State<Payment> {
                     ),
                         Padding(padding: EdgeInsets.fromLTRB(0, 20, 130, 0),
                           child: Text("Apply Credits and Balances",
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                               color: Colors.black,
                               fontSize: 13
                             ),
                           ),
                         ),
                     SizedBox(
-                      height: 140,
+                      height: 180,
                     ),
                     Container(
                       height: 40,
-                      width: 340,
+                      width: 320,
                       child: FlatButton(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -291,7 +256,7 @@ class _PaymentState extends State<Payment> {
                         child: Center(
                           child: Text(
                             "Book",
-                            style: GoogleFonts.limelight(
+                            style: GoogleFonts.roboto(
                               color: Colors.white,
                             ),
                           ),

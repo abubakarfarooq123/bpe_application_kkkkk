@@ -67,7 +67,7 @@ class _Passport_Pop_UpState extends State<Passport_Pop_Up> {
         backgroundColor: Colors.transparent,
         title: Text(
           "Passport Validation",
-          style: GoogleFonts.limelight(
+          style: GoogleFonts.roboto(
             fontSize: 25.0,
             color: Colors.white,
           ),
@@ -99,7 +99,7 @@ class _Passport_Pop_UpState extends State<Passport_Pop_Up> {
                 Text(
                   "Passport Verification",
                   style:
-                  GoogleFonts.limelight(color: Colors.black),
+                  GoogleFonts.roboto(color: Colors.black),
                 ),
                 Column(
                   children: [
@@ -263,7 +263,7 @@ class _Passport_Pop_UpState extends State<Passport_Pop_Up> {
                                 }
                               },
                               child: Text("Confirm",
-                                style: GoogleFonts.limelight(
+                                style: GoogleFonts.roboto(
                                   color: Colors.white,
                                 ),),
                             ),
@@ -312,7 +312,7 @@ class _Passport_Pop_UpState extends State<Passport_Pop_Up> {
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       "Thanks for sharing your details",
-                      style: GoogleFonts.limelight(
+                      style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 12,
                       ),
@@ -322,7 +322,7 @@ class _Passport_Pop_UpState extends State<Passport_Pop_Up> {
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       "We received your details. Our team will check it out and come back to you in a bit on this if any other thing needed.",
-                      style: GoogleFonts.limelight(
+                      style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 12,
                       ),
@@ -332,7 +332,7 @@ class _Passport_Pop_UpState extends State<Passport_Pop_Up> {
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       "Thanks For Using BPE Air",
-                      style: GoogleFonts.limelight(
+                      style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 12,
                       ),
@@ -359,7 +359,7 @@ class _Passport_Pop_UpState extends State<Passport_Pop_Up> {
                         },
                         child: Text(
                           "Continue",
-                          style: GoogleFonts.limelight(
+                          style: GoogleFonts.roboto(
                             color: Colors.white,
                             fontSize: 12,
                           ),

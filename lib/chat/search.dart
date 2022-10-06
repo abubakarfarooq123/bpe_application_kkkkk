@@ -75,7 +75,7 @@
 //                 if (snapshot.hasData){
 //                   QuerySnapshot dataSnapshot = snapshot.data as QuerySnapshot;
 //                   Map<String,dynamic> UserMap= dataSnapshot.docs[0].data() as Map<String,dynamic>;
-//                   UserModel searchedUser =
+//                   UserMap= snapshot.data[0].data();
 //
 //                 }
 //                 else if(snapshot.hasError){

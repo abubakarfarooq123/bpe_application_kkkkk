@@ -27,7 +27,7 @@ class _VerificationState extends State<Verification> {
             padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
             child: Text(
               "ID Verification",
-              style: GoogleFonts.limelight(
+              style: GoogleFonts.roboto(
                 fontSize: 20,
               ),
             ),
@@ -56,7 +56,7 @@ class _VerificationState extends State<Verification> {
             padding: const EdgeInsets.fromLTRB(15, 1, 15, 0),
             child: Text("For the safety of the community, ID verification must be done to board a flight.",
               textAlign: TextAlign.justify,
-              style: GoogleFonts.limelight(
+              style: GoogleFonts.roboto(
                   color: Colors.black,
                   fontSize: 13,
               ),
@@ -64,8 +64,8 @@ class _VerificationState extends State<Verification> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 30, 15, 0),
-            child: Text("Please have your valid driver’s license or passposrt ready.",
-              style: GoogleFonts.limelight(
+            child: Text("Please have your valid driver’s license or passport ready.",
+              style: GoogleFonts.roboto(
                 color: Colors.black,
                 fontSize: 13,
                 letterSpacing: 0.8
@@ -93,7 +93,7 @@ class _VerificationState extends State<Verification> {
                 color: Color.fromARGB(255, 218, 162, 16),
                 child: Text(
                   'Start Verification',
-                  style: GoogleFonts.limelight(
+                  style: GoogleFonts.roboto(
                     fontSize: 15.0,
                     color: Colors.white,
                   ),

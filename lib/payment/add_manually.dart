@@ -28,7 +28,7 @@ class _ManuallyState extends State<Manually> {
           padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
           child: Text(
             "Enter Manually",
-            style: GoogleFonts.limelight(
+            style: GoogleFonts.roboto(
               fontSize: 20,
             ),
           ),
@@ -50,7 +50,7 @@ class _ManuallyState extends State<Manually> {
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: Text(
                     "Card Details",
-                    style: GoogleFonts.limelight(
+                    style: GoogleFonts.roboto(
                       color: Colors.black,
                       fontSize: 20,
                     ),
@@ -131,7 +131,7 @@ class _ManuallyState extends State<Manually> {
                               color: Color.fromARGB(1000, 218, 162, 16),
                               child: Text(
                                 'Submit',
-                                style: GoogleFonts.limelight(
+                                style: GoogleFonts.roboto(
                                   fontSize: 18.0,
                                   color: Colors.white,
                                 ),

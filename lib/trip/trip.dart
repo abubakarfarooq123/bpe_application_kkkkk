@@ -19,6 +19,7 @@ class _TripState extends State<Trip> {
         DateTime.fromMillisecondsSinceEpoch(timestamp.seconds * 1000);
     return DateFormat('dd-MM-yyyy').format(dateFromTimeStamp);
   }
+
   Widget list() {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
@@ -27,16 +28,17 @@ class _TripState extends State<Trip> {
           .collection("MyBook")
           .snapshots(),
       builder: (context, snapshot) {
-        if (snapshot.hasData){
-          if(snapshot.data?.docs.length==0){
-            return  Column(
+        if (snapshot.hasData) {
+          if (snapshot.data?.docs.length == 0) {
+            return Column(
               children: [
-
                 Padding(
-                  padding: const EdgeInsets.only(top:30,left: 20,right: 20),
-                  child: Image.asset('assets/images/lv.png',
-                  height: 450,
-                  width: 450,),
+                  padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+                  child: Image.asset(
+                    'assets/images/lv.png',
+                    height: 450,
+                    width: 450,
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -51,18 +53,19 @@ class _TripState extends State<Trip> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       color: Color.fromARGB(255, 218, 162, 16),
-                      onPressed: (){
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => homeNavBar()));
-                    }, child: Text(
-        'Book Flight',
-        style: GoogleFonts.roboto(
-        fontSize: 15.0,
-        color: Colors.white,
-        ),
-                    ),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => homeNavBar()));
+                      },
+                      child: Text(
+                        'Book Flight',
+                        style: GoogleFonts.roboto(
+                          fontSize: 15.0,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -76,7 +79,7 @@ class _TripState extends State<Trip> {
               DocumentSnapshot dc = snapshot.data!.docs[index];
               return SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 15,left: 10,right: 10),
+                  padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
                   child: Container(
                     height: 100,
                     padding: EdgeInsets.all(16),
@@ -87,8 +90,7 @@ class _TripState extends State<Trip> {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 5,
                           blurRadius: 7,
-                          offset: Offset(
-                              0, 3), // changes position of shadow
+                          offset: Offset(0, 3), // changes position of shadow
                         ),
                       ],
                       borderRadius: BorderRadius.circular(16),
@@ -98,8 +100,7 @@ class _TripState extends State<Trip> {
                       child: Column(
                         children: [
                           Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(
                                 width: 100,
@@ -128,8 +129,7 @@ class _TripState extends State<Trip> {
                                 style: GoogleFonts.roboto(
                                     color: Colors.black,
                                     fontSize: 13,
-                                    fontWeight:FontWeight.bold
-                                ),
+                                    fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
                                 width: 16,
@@ -146,8 +146,7 @@ class _TripState extends State<Trip> {
                                   child: DecoratedBox(
                                     decoration: BoxDecoration(
                                       color: Colors.black,
-                                      borderRadius:
-                                      BorderRadius.circular(5),
+                                      borderRadius: BorderRadius.circular(5),
                                     ),
                                   ),
                                 ),
@@ -160,30 +159,28 @@ class _TripState extends State<Trip> {
                                       SizedBox(
                                         height: 24,
                                         child: LayoutBuilder(
-                                          builder:
-                                              (context, constraints) {
+                                          builder: (context, constraints) {
                                             return Flex(
                                               children: List.generate(
                                                   (constraints.constrainWidth() /
-                                                      6)
+                                                          6)
                                                       .floor(),
-                                                      (index) => SizedBox(
-                                                    height: 1,
-                                                    width: 3,
-                                                    child:
-                                                    DecoratedBox(
-                                                      decoration: BoxDecoration(
-                                                          color: Colors
-                                                              .grey
-                                                              .shade300),
-                                                    ),
-                                                  )),
+                                                  (index) => SizedBox(
+                                                        height: 1,
+                                                        width: 3,
+                                                        child: DecoratedBox(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade300),
+                                                        ),
+                                                      )),
                                               direction: Axis.horizontal,
-                                              mainAxisSize:
-                                              MainAxisSize.max,
+                                              mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                              MainAxisAlignment
-                                                  .spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                             );
                                           },
                                         ),
@@ -212,8 +209,7 @@ class _TripState extends State<Trip> {
                                   child: DecoratedBox(
                                     decoration: BoxDecoration(
                                       color: Colors.black,
-                                      borderRadius:
-                                      BorderRadius.circular(5),
+                                      borderRadius: BorderRadius.circular(5),
                                     ),
                                   ),
                                 ),
@@ -224,10 +220,9 @@ class _TripState extends State<Trip> {
                               Text(
                                 formatted(dc["enddate"]),
                                 style: GoogleFonts.roboto(
-                                  color: Colors.black,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold
-                                ),
+                                    color: Colors.black,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -239,10 +234,9 @@ class _TripState extends State<Trip> {
               );
             },
           );
-        }
-        else{
-          return CircularProgressIndicator();
-
+        } else {
+          return Center(
+              child: CircularProgressIndicator());
         }
       },
     );
@@ -267,6 +261,7 @@ class _TripState extends State<Trip> {
             style: GoogleFonts.roboto(color: Colors.white),
           ),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: ClipRRect(

@@ -72,6 +72,8 @@ dependencies:
   get: any
   fade_shimmer: any
   shimmer: any
+  crop_image: any
+  image_cropper: any
 
 
 

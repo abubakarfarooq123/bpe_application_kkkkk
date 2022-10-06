@@ -26,7 +26,7 @@ class _Frequent_LocationState extends State<Frequent_Location> {
           padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
           child: Text(
             "Frequent Location",
-            style: GoogleFonts.limelight(
+            style: GoogleFonts.roboto(
               fontSize: 17,
             ),
           ),
@@ -66,7 +66,7 @@ class _Frequent_LocationState extends State<Frequent_Location> {
                   padding: EdgeInsets.only(top: 40),
                   child: Center(
                     child: Text("Add Location",
-                    style: GoogleFonts.limelight(
+                    style: GoogleFonts.roboto(
                       color: Colors.black,
                       fontSize: 15
                     ),),
@@ -76,10 +76,11 @@ class _Frequent_LocationState extends State<Frequent_Location> {
                   padding: EdgeInsets.all(40),
                   child: Center(
                     child: Text("If you would like to receive flight notifications for your favourite destinations, add them to your frequesnt locations list.Let us work our magic and we’ll get you there!",
-                        textAlign: TextAlign.justify,
-                      style: GoogleFonts.limelight(
+                      textAlign: TextAlign.justify,
+                      style: GoogleFonts.roboto(
                           color: Colors.black,
-                          fontSize: 15,
+                          fontSize: 16,
+                        letterSpacing: -1,
                       ),),
                   ),
                 ),
@@ -100,7 +101,7 @@ class _Frequent_LocationState extends State<Frequent_Location> {
                     },
                     child: Text(
                       'Update',
-                      style: GoogleFonts.limelight(
+                      style: GoogleFonts.roboto(
                         fontSize: 17.0,
                         color: Colors.white,
                       ),

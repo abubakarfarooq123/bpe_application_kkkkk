@@ -3,14 +3,14 @@ import 'package:bpe_application/demo_pages/demo5.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class Waiting extends StatefulWidget {
-  const Waiting({Key? key}) : super(key: key);
+class LoginWaiting extends StatefulWidget {
+  const LoginWaiting({Key? key}) : super(key: key);
 
   @override
-  _WaitingState createState() => _WaitingState();
+  _LoginWaitingState createState() => _LoginWaitingState();
 }
 
-class _WaitingState extends State<Waiting> {
+class _LoginWaitingState extends State<LoginWaiting> {
   @override
   void initState() {
     super.initState();
